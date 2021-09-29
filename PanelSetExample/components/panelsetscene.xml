@@ -1,0 +1,219 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+<component name = "PanelSetExample" extends = "Scene" >
+
+  <script type = "text/brightscript" >
+    <![CDATA[
+
+    sub init()
+      'm.authed = CreateObject("roRegistry")
+      'm.authed = false;
+      'm.home
+      'm.faq
+      'm.guides
+
+      m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
+
+      m.panelset = createObject("roSGNode", "PanelSet")
+      m.top.appendChild(m.panelset)
+      m.panelset.visible = false
+
+      'm.readContentTask = createObject("roSGNode", "ContentReader")
+      'm.readContentTask.observeField("content", "setpanels")
+      'm.readContentTask.contenturi = "http://www.sdktestinglab.com/Tutorial/content/panelsetcontent.xml"
+      'm.readContentTask.control = "RUN"
+      
+      m.listpanel = m.panelset.createChild("ListPanelExample")
+      'm.listpanel.list.content = m.readContentTask.content
+
+      m.panel = m.panelset.createChild("PanelExample")
+
+      m.listpanel.list.observeField("itemFocused", "showpanelinfo")
+      m.panel.observeField("focusedChild", "slidepanels")
+      
+      'AUTH SHIT'
+      m.authLabel = m.top.findNode("auth")
+      qq = GetAuthData("UserRegistrationToken")
+      ww = GetAuthData("Username")
+      m.authLabel.text = qq + ww
+      
+      'WORKS'
+        'thing = "book"
+        'color = "red"
+        'nuz = 1
+        'zz = Substitute("My {0} is {1} and {2}.", thing, color)
+        'm.authLabel.text = zz + nuz.ToStr()
+      m.homeLayout = m.top.findNode("homeLayoutGroup")
+      
+      ar = [{title: "hi"}, {title:"there"}, {title:"bugy"}]
+      'LoadJSONFile()
+      m.infLabel = m.top.findNode("infoLabel")
+      jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+      jzon = ParseJSON(jsonAsString)
+      m.infLabel.text = jzon.profile
+
+      m.counter = 0
+      ' OK, so loops are working, and loops to generate items are working
+      for each item in jzon.Arr
+        tag = createLabel(item, m.counter)
+        m.homeLayout.appendChild(tag)
+        m.counter = m.counter + 1
+      end for
+
+      for each item in ar
+        tag = createLabel(item, m.counter)
+        m.homeLayout.appendChild(tag)
+        m.counter = m.counter + 1
+      end for
+      
+
+      m.hombe = m.top.findNode("homeGroup")
+      m.bob = m.top.findNode("bob")
+      m.bob.observeField("buttonSelected", "onButtonSelected")
+      
+      m.bob.setFocus(true)
+      'm.hombe.visible = false
+      'm.listpanel.setFocus(true)
+
+    end sub
+
+    'Function LoadJSONFile() void
+    '  jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+    '  m.json = ParseJSON(jsonAsString)
+    'End Function
+
+    function createLabel(obj as Object, couz as Integer) As Dynamic
+      co = couz.ToStr()
+      label = CreateObject("roSGNode", "Label")
+      label.text = obj.title + co
+      label.id = "infoLabel" + co
+      label.height="0"
+      'label.horizAlign="right"
+      'label.translation="[0,0]"
+      label.width="300"
+      label.wrap = "true"
+      return label
+    end function
+
+    function onButtonSelected()
+        if m.bob.buttonSelected = 0 then 
+          xx = SetAuthData("fox")
+          m.authLabel.text = "button0 " + xx
+        else if m.bob.buttonSelected = 1 then
+          bb = GetAuthData("UserRegistrationToken")
+          cc = GetAuthData("Username")
+          m.authLabel.text = "button1" + bb + cc
+        end if
+    end function
+    
+    Function GetAuthData( key as String) As Dynamic
+         sec = CreateObject("roRegistrySection", "Authentication")
+         if sec.Exists(key)
+             return sec.Read(key)
+         endif
+         return "invalid"
+    End Function
+
+    Function SetAuthData(userToken As String)
+        sec = CreateObject("roRegistrySection", "Authentication")
+        sec.Write("UserRegistrationToken", userToken)
+        sec.Write("Username", "wonder")
+        sec.Flush()
+        return "set " + userToken
+    End Function
+
+    sub renderGroup()
+
+    end sub
+
+    sub showpanelinfo()
+      panelcontent = m.listpanel.list.content.getChild(m.listpanel.list.itemFocused)
+
+      m.panel.description = panelcontent.description
+
+      m.gridpanel = createObject("roSGNode", "GridPanelExample")
+
+      m.gridpanel.gridcontenturi = panelcontent.url
+    end sub
+
+    sub slidepanels()
+      if not m.panelset.isGoingBack
+        m.panelset.appendChild(m.gridpanel)
+        m.gridpanel.setFocus(true)
+      else
+        m.listpanel.setFocus(true)
+      end if 
+    end sub
+    
+    Function onKeyEvent(key as String, press as Boolean)
+      handled = false
+
+      if press
+          if key = "back"
+            if (m.panelset.visible = true)
+              m.panelset.visible = false
+            else
+              m.panelset.visible = true
+              m.listpanel.setFocus(true)
+            endif
+            'DISPLAY HOME GROUP'
+            if (m.hombe.visible = true)
+              m.hombe.visible = false
+            else
+              m.hombe.visible = true
+              m.bob.setFocus(true)
+            endif
+          end if
+      end if
+
+      return handled
+    end Function
+
+
+
+    ]]>
+
+  </script>
+
+  <children>
+    <Group
+      id="homeGroup"
+      visible="true">
+      <LayoutGroup
+        id="homeLayoutGroup"
+        translation="[215,69]">
+        <ButtonGroup
+          id="bob"
+          layoutDirection="horiz">
+          <Button
+            focusedIconUri=""
+            iconUri=""
+            text="ALL THE THINGS"/>
+          <Button
+            focusedIconUri=""
+            iconUri=""
+            text="YOU SHOULD KNOW"/>
+        </ButtonGroup>
+        <Label
+          id = "infoLabel" 
+          height="0"
+          horizAlign="right"
+          text="hello there, welcome!"
+          translation="[0,0]"
+          width="522"
+          wrap = "true" />
+        <Label
+          id = "auth" 
+          height="0"
+          horizAlign="right"
+          text="z"
+          translation="[0,0]"
+          width="522"
+          wrap = "true" />          
+      </LayoutGroup>
+    </Group>
+
+  </children>
+</component>

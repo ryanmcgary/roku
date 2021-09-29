@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component
+  name="RALE_MainScene_1"
+  extends="MainScene">
+  <children>
+    <Poster
+      height="833.3335"
+      opacity="0.2"
+      uri="https://www.sun-sentinel.com/resizer/sEmp_leyKzszCI5bf5ASMnJ73LI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/REIYVIGSBBFRFPF6DDZHOZ6H3Y.jpg"
+      width="1280"/>
+    <Group
+      id="home"
+      visible="false">
+      <LayoutGroup
+        id="home"
+        translation="[415,69]">
+        <Label
+          height="0"
+          horizAlign="right"
+          text="hello there, welcome!"
+          translation="[0,0]"
+          width="522"/>
+      </LayoutGroup>
+      <LayoutGroup
+        translation="[953,42]">
+        <Poster
+          height="80"
+          uri="https://www.shoptab.net/blog/wp-content/uploads/2014/07/profile-circle.png"
+          width="80"/>
+      </LayoutGroup>
+      <LayoutGroup
+        translation="[169,251]">
+        <Label
+          height="223"
+          maxLines="6"
+          text="Welcome to all the things, we hope you enjoy your stay bro!"
+          width="555"
+          wrap="true"/>
+      </LayoutGroup>
+      <LayoutGroup
+        translation="[148,447]">
+        <ButtonGroup
+          layoutDirection="horiz">
+          <Button
+            focusedIconUri="s"
+            iconUri="s"
+            text="ALL THE THINGS"/>
+          <Button
+            focusedIconUri="s"
+            iconUri="s"
+            text="YOU SHOULD KNOW"/>
+        </ButtonGroup>
+      </LayoutGroup>
+    </Group>
+  </children>
+</component>
