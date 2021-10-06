@@ -14,7 +14,7 @@
       'm.faq
       'm.guides
 
-      m.top.backgroundURI = "pkg:/images/rsgde_bg_hd.jpg"
+      m.top.backgroundURI = "pkg:/images/house.jpg"
 
       m.panelset = createObject("roSGNode", "PanelSet")
       m.top.appendChild(m.panelset)
@@ -52,11 +52,11 @@
       m.infLabel = m.top.findNode("infoLabel")
       jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
       jzon = ParseJSON(jsonAsString)
-      m.infLabel.text = jzon.profile
+      m.infLabel.text = jzon.welcome_text
 
       m.counter = 0
       ' OK, so loops are working, and loops to generate items are working
-      for each item in jzon.Arr
+      for each item in jzon.faq
         tag = createLabel(item, m.counter)
         m.homeLayout.appendChild(tag)
         m.counter = m.counter + 1
@@ -178,6 +178,89 @@
   </script>
 
   <children>
+    'BELOW HERE IS IN PROGRESS'
+    <Group id="homeScreen">
+      <LayoutGroup id="home_welcome_text">
+          <Label/> <Poster=user_image />
+      </LayoutGroup>
+      <LayoutGroup id="hometext">
+      </LayoutGroup>
+      <LayoutGroup>
+        <ButtonGroup>
+          <Button/>
+          <Button/>
+        </ButtonGroup>
+      </LayoutGroup>
+    </Group>
+
+    <Group id="faqScreen">
+      iterator = 0
+      loop over sections >
+        add button > visible id0
+        add text area > hidden id0
+      end 
+      onKeyEvent
+      if down
+        what focus.id
+        focus(focus.id + 0)
+      end
+      <LayoutGroup id="faq_welcome_text">
+          <Label /><Poster=user_image />
+      </LayoutGroup>
+      <LayoutGroup id="faqtextitems">
+        <Label id=title01>
+        <Label id=body01> 
+      </LayoutGroup>
+    </Group>
+    
+    <Group id="guides">
+      <LayoutGroup id="guide_welcome_text">
+          <Label/><Poster=user_image />
+      </LayoutGroup>
+      <LayoutGroup id="hometext">
+      </LayoutGroup>
+      <LayoutGroup id=guidegrid>
+        <Poster></Poster>  <Poster></Poster>
+        <Poster></Poster>  <Poster></Poster>
+        <Poster></Poster>  <Poster></Poster>
+      </LayoutGroup>
+      <LayoutGroup id=guidepreview>
+        <Poster>
+        </Poster>
+        function rotateImageEveryN
+        end
+      </LayoutGroup>
+    </Group>
+    'ABOVE HERE IS IN PROGRESS'
+    
+    'BELOW HERE IS WORKING'
+    <Group id="guideDetails">
+      <LayoutGroup id="detail header">
+      </LayoutGroup>
+      <LayoutGroup id=guidegrid>
+        <Poster id=01>resteraount</Poster>
+        <Poster id=02>resteraount</Poster>
+        <Poster id=03>resteraount</Poster>
+      </LayoutGroup>
+      counter = 0
+      loop resteraunt for 
+        add Poster.id = "post" + counter
+        add listener(counter) on focus delete and render new guidepreviewRender
+        counter ++
+      end
+      function guidePreviewRender
+        get focus id, 
+        localVar = get tag with venueMedia + focus id
+        localVar/venueMedia.image = item 01
+      end
+      <LayoutGroup id=guidepreview>
+        <Poster id=venueMedia>
+        </Poster>
+        function rotateImageEveryN
+        end
+      </LayoutGroup>
+    </Group>  
+
     <Group
       id="homeGroup"
       visible="true">
