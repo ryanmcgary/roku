@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<component name="SimpleTask" extends="Task">
+
+<interface>
+	<field id="auth" type="string" value=""/>
+</interface>
+
+<script type="text/brightscript" >
+<![CDATA[
+
+sub init()
+	m.top.functionName = "executeTask"
+end sub
+
+function executeTask() as void
+	code = getData("pinCode")
+	homeId = getData("HomeId")
+
+	if homeId <> "invalid" then
+		authRequest = CreateObject("roUrlTransfer")
+		authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/get_home/"+ homeId +".json")
+		'authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/auth_check/1234.json")
+		response = authRequest.GetToString()
+		m.top.auth = response
+	else
+		authRequest = CreateObject("roUrlTransfer")
+		authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/auth_check/"+ code +".json")
+		'authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/auth_check/1234.json")
+		response = authRequest.GetToString()
+		m.top.auth = response
+	end if
+
+	'while true
+	'	sleep(2000)
+	'	m.top.index = m.top.index + 1
+	'end while
+end function
+
+'THESE ARE DATA STORAGE SET/GETTERS'
+Function getData( key as String) As String
+	sec = CreateObject("roRegistrySection", "Authentication")
+	if sec.Exists(key)
+	  return sec.Read(key)
+	endif
+	return "invalid"
+End Function
+
+Function setData(key As String, storedValue As String)
+	sec = CreateObject("roRegistrySection", "Authentication")
+	sec.Write(key, storedValue)
+	'sec.Write("Username", "wonder")
+	sec.Flush() 'THIS LINE IS WHAT SAVES VALUES'
+	return "set"
+End Function
+
+Function deleteData(key As String)
+	sec = CreateObject("roRegistrySection", "Authentication")
+	sec.Delete(key)
+	'sec.Write("Username", "wonder")
+	'sec.Flush() 'THIS LINE IS WHAT SAVES VALUES'
+	return "delete " + userToken
+End Function
+]]>
+</script>
+
+</component>

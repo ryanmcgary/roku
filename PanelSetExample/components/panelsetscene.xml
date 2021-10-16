@@ -26,30 +26,45 @@
           m.video = m.top.findNode("guidePreviewVideo") 'NEED THIS TO MAKE SURE SHIT DONT BREAK'
           m.videoVenue = m.top.findNode("venuePreviewVideo") 'NEED THIS TO MAKE SURE SHIT DONT BREAK'
 
-
+          'MOVED FROM renderPinCodeScreen SEE IT THERE IN COMMENTS'
+          m.pinAttemptLink = m.top.findNode("pinAttemptLink")
+          m.pinAttemptLink.observeField("buttonSelected", "getAuthJson") ' THIS TRIGGERS NEXT STEP IN FLOW
         'SPLASH SCREEN'
         m.top.backgroundURI = "pkg:/images/house.jpg"
         
-        'deleteData("HomeId")
+        
+        
+        pinCode = getData("pinCode")
+        if pinCode = "invalid" then
+        else
+          deleteData("pinCode")
+        end if        
+
+        
         m.homeId = getData("HomeId")
+        
+        if m.homeId = "invalid" then
+        else
+          deleteData("HomeId")
+        end if
         'DEBUG SETUP/TEARDOWN'
-          'debugHomeId = getData("HomeId")
-          'deleteData("HomeId")
-          'm.globalStatus.text = "invalid" + debugHomeId.toStr()
-          m.homeId = "invalid"
-          'm.globalStatus.text = m.homeId.toStr()
+        m.homeId = "invalid" 
         'END DEBUG SETUP/TEARDOWN'
 
         if m.homeId = "invalid" then 'MEANS A PROPERTY IS SET'
           m.globalStatus.text = "invaliden" + m.homeId.toStr()
           renderPinCodeScreen()
         else
+          m.globalStatus.text = "VALID" + m.homeId.toStr()
+          renderPinCodeScreen()
           'SET JSON FROM LOCAL FILE'
           'THIS NEEDS TO BE FOR REMOTE QUERY m.jsonAsString = ReadAsciiFile("pkg:/json/testCase" + homeId + ".json")
           'm.jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
           'm.jzon = ParseJSON(jsonAsString)
-          m.globalStatus.text = "else = renderHomeScreen"
-          renderHomeScreen()
+          'renderHomeScreen()
+          
+          getAuthJson()
+        
         end if     
       end sub
 
@@ -68,10 +83,11 @@
           pinLabel.translation = [ centerx, centery ]
           m.code = (1000 + Rnd(8999)).ToStr()
           pinLabel.text = m.code
-
+          
+          setData("pinCode", m.code)
         'OBSERVE LINK BUTTON TO CHECK URL'
-          m.pinAttemptLink = m.top.findNode("pinAttemptLink")
-          m.pinAttemptLink.observeField("buttonSelected", "attemptLink")
+          'm.pinAttemptLink = m.top.findNode("pinAttemptLink")
+          'm.pinAttemptLink.observeField("buttonSelected", "getAuthJson") ' THIS TRIGGERS NEXT STEP IN FLOW
           m.pinAttemptLink.setFocus(true)
 
         'ENSURE VIEW RENDERED'
@@ -83,30 +99,73 @@
         'UPDATE CURRENT SCREEN'
           m.currentScreen = "pin"
       end sub
+      
+      sub getAuthJson()
+        TRY
+          m.globalStatus.text = "sduffy fired"
+          m.globalStatus.text = "getAuthJson fired"
+          m.simpleTask = CreateObject("roSGNode", "SimpleTask")
+
+          m.simpleTask.ObserveField("auth", "onAuthCheck")
+          m.simpleTask.control = "RUN"
+          m.globalStatus.text = "duffy fired"
+        CATCH dfs
+        END TRY
+      end sub 
+
+      function onAuthCheck() as void
+        TRY
+          authCheck = ParseJSON(m.simpleTask.auth)
+          if authCheck.authed = 1 then
+            setData("HomeId", authCheck.homeId.ToStr())
+            m.homeId = authCheck.homeId.ToStr()
+
+            m.pinCodeScreen.visible = false
+            m.globalStatus.text = "YAYA"
+            m.jzon = ParseJSON(m.simpleTask.homeData)
+            m.jbon = ParseJSON(m.simpleTask.homeData)
+            jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+            m.jbon = ParseJSON(jsonAsString)
+            m.jzon = ParseJSON(jsonAsString)
+            attemptLink()
+          else
+            m.globalStatus.text = "not authed"
+            renderPinCodeScreen("Invalid Pin. Please Try Again.")          
+          end if
+          'm.globalStatus.text = "globalIndex NA"
+          'str = "Iteration " + stri(m.simpleTask.index)
+          'm.globalStatus.text = "globalIndex" + str + m.simpleTask.xxx
+        CATCH dfs
+        END TRY
+      end function         
+
+      'sub getHomeJson()
+      '  TRY
+      '    m.globalStatus.text = "attemptLink fired"
+      '    m.simpleTask = CreateObject("roSGNode", "SimpleTask")
+      '    m.simpleTask.control = "RUN"
+      '  CATCH dfs
+      '  END TRY
+      'end sub
+      'function onHomeData() as void
+      '  TRY
+      '    m.jzon = ParseJSON(m.simpleTask.homeData)
+      '    m.jbon = ParseJSON(m.simpleTask.homeData)
+      '    attemptLink()
+      '    'm.globalStatus.text = "globalIndex NA"
+      '    'str = "Iteration " + stri(m.simpleTask.index)
+      '    'm.globalStatus.text = "globalIndex" + str + m.simpleTask.xxx
+      '  CATCH dfs
+      '  END TRY
+      'end function      
+
 
       sub attemptLink()
-        m.globalStatus.text = "attemptLink fired"
+        'm.globalStatus.text = "attemptLink fired"
         'THIS NEEDS TO BE FOR REMOTE QUERY jsonAsString = ReadAsciiFile("pkg:/json/checkAuth.json/"+ m.code)
-        jsonString = ReadAsciiFile("pkg:/json/auth.json")
-        authCheck = ParseJSON(jsonString)
-        
-        if authCheck.authed = 1 then
-          m.pinCodeScreen.visible = false
-          m.globalStatus.text = "authed" + authCheck.authed.ToStr() + " h:" + authCheck.homeId.ToStr()
-          'SAVE HOME ID IF AUTHED & SET AS GLOBAL VAR'
-          setData("HomeId", authCheck.homeId.ToStr())
-          m.homeId = authCheck.homeId
-          
-          'GET ACTUAL DATA FOR HOME'
-          jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
-          m.jzon = ParseJSON(jsonAsString)
-          
-          initFAQScreen()
-          renderHomeScreen()
-        else
-          m.globalStatus.text = "not authed"
-          renderPinCodeScreen("Invalid Pin. Please Try Again.")
-        end if
+        'jsonString = ReadAsciiFile("pkg:/json/auth.json")
+        initFAQScreen()
+        renderHomeScreen()
       end sub
     
     'FOR HOME SCREEN'
@@ -657,12 +716,11 @@
         return "set"
       End Function
 
-      Function deleteData(key As String)
+      Function deleteData(key As String) As Void
         sec = CreateObject("roRegistrySection", "Authentication")
         sec.Delete(key)
         'sec.Write("Username", "wonder")
         'sec.Flush() 'THIS LINE IS WHAT SAVES VALUES'
-        return "delete " + userToken
       End Function
       
       Function onKeyEvent(key as String, press as Boolean)
@@ -734,9 +792,6 @@
     </Group>
     
     <Group id="pinCodeScreen" visible="false">
-      <LayoutGroup translation="[0,0]">
-        <Rectangle width="1340" height="780" color="0x010101FF" />
-      </LayoutGroup>
       <LayoutGroup translation="[215,69]">
         <Label id="pinMessage"/>
         <Label id="pinLabel"/>
