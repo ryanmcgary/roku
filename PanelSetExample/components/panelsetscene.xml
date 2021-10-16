@@ -7,296 +7,833 @@
   <script type = "text/brightscript" >
     <![CDATA[
 
-    sub init()
-      'm.authed = CreateObject("roRegistry")
-      'm.authed = false;
-      'm.home
-      'm.faq
-      'm.guides
+    'INIT APP'
+      sub init()
+        'm.authed = CreateObject("roRegistry")'m.authed = false;'m.home'm.faq'm.guides
 
-      m.top.backgroundURI = "pkg:/images/house.jpg"
+        'GLOBALS
+          'STATUS'
+            m.currentScreen = "init"
+            m.globalStatus = m.top.findNode("globalStatus")
+          'SCREENS'
+            m.homeScreen = m.top.findNode("homeScreen")
+            m.pinCodeScreen = m.top.findNode("pinCodeScreen")
+            m.greetingScreen = m.top.findNode("greetingScreen")
+            m.faqScreen = m.top.findNode("faqScreen")
+            m.guideListScreen = m.top.findNode("guideListScreen")
+            m.guideShowScreen = m.top.findNode("guideShowScreen")
+          'INIT HELPERS'
+          m.video = m.top.findNode("guidePreviewVideo") 'NEED THIS TO MAKE SURE SHIT DONT BREAK'
 
-      m.panelset = createObject("roSGNode", "PanelSet")
-      m.top.appendChild(m.panelset)
-      m.panelset.visible = false
+        'SPLASH SCREEN'
+        m.top.backgroundURI = "pkg:/images/house.jpg"
+        
+        'deleteData("HomeId")
+        m.homeId = getData("HomeId")
+        'DEBUG SETUP/TEARDOWN'
+          'debugHomeId = getData("HomeId")
+          'deleteData("HomeId")
+          'm.globalStatus.text = "invalid" + debugHomeId.toStr()
+          m.homeId = "invalid"
+          'm.globalStatus.text = m.homeId.toStr()
+        'END DEBUG SETUP/TEARDOWN'
 
-      'm.readContentTask = createObject("roSGNode", "ContentReader")
-      'm.readContentTask.observeField("content", "setpanels")
-      'm.readContentTask.contenturi = "http://www.sdktestinglab.com/Tutorial/content/panelsetcontent.xml"
-      'm.readContentTask.control = "RUN"
-      
-      m.listpanel = m.panelset.createChild("ListPanelExample")
-      'm.listpanel.list.content = m.readContentTask.content
+        if m.homeId = "invalid" then 'MEANS A PROPERTY IS SET'
+          m.globalStatus.text = "invaliden" + m.homeId.toStr()
+          renderPinCodeScreen()
+        else
+          'SET JSON FROM LOCAL FILE'
+          'THIS NEEDS TO BE FOR REMOTE QUERY m.jsonAsString = ReadAsciiFile("pkg:/json/testCase" + homeId + ".json")
+          'm.jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+          'm.jzon = ParseJSON(jsonAsString)
+          m.globalStatus.text = "else = renderHomeScreen"
+          renderHomeScreen()
+        end if     
+      end sub
 
-      m.panel = m.panelset.createChild("PanelExample")
-
-      m.listpanel.list.observeField("itemFocused", "showpanelinfo")
-      m.panel.observeField("focusedChild", "slidepanels")
-      
-      'AUTH SHIT'
-      m.authLabel = m.top.findNode("auth")
-      qq = GetAuthData("UserRegistrationToken")
-      ww = GetAuthData("Username")
-      m.authLabel.text = qq + ww
-      
-      'WORKS'
-        'thing = "book"
-        'color = "red"
-        'nuz = 1
-        'zz = Substitute("My {0} is {1} and {2}.", thing, color)
-        'm.authLabel.text = zz + nuz.ToStr()
-      m.homeLayout = m.top.findNode("homeLayoutGroup")
-      
-      ar = [{title: "hi"}, {title:"there"}, {title:"bugy"}]
-      'LoadJSONFile()
-      m.infLabel = m.top.findNode("infoLabel")
-      jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
-      jzon = ParseJSON(jsonAsString)
-      m.infLabel.text = jzon.welcome_text
-
-      m.counter = 0
-      ' OK, so loops are working, and loops to generate items are working
-      for each item in jzon.faq
-        tag = createLabel(item, m.counter)
-        m.homeLayout.appendChild(tag)
-        m.counter = m.counter + 1
-      end for
-
-      for each item in ar
-        tag = createLabel(item, m.counter)
-        m.homeLayout.appendChild(tag)
-        m.counter = m.counter + 1
-      end for
-      
-
-      m.hombe = m.top.findNode("homeGroup")
-      m.bob = m.top.findNode("bob")
-      m.bob.observeField("buttonSelected", "onButtonSelected")
-      
-      m.bob.setFocus(true)
-      'm.hombe.visible = false
-      'm.listpanel.setFocus(true)
-
-    end sub
-
-    'Function LoadJSONFile() void
-    '  jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
-    '  m.json = ParseJSON(jsonAsString)
-    'End Function
-
-    function createLabel(obj as Object, couz as Integer) As Dynamic
-      co = couz.ToStr()
-      label = CreateObject("roSGNode", "Label")
-      label.text = obj.title + co
-      label.id = "infoLabel" + co
-      label.height="0"
-      'label.horizAlign="right"
-      'label.translation="[0,0]"
-      label.width="300"
-      label.wrap = "true"
-      return label
-    end function
-
-    function onButtonSelected()
-        if m.bob.buttonSelected = 0 then 
-          xx = SetAuthData("fox")
-          m.authLabel.text = "button0 " + xx
-        else if m.bob.buttonSelected = 1 then
-          bb = GetAuthData("UserRegistrationToken")
-          cc = GetAuthData("Username")
-          m.authLabel.text = "button1" + bb + cc
-        end if
-    end function
-    
-    Function GetAuthData( key as String) As Dynamic
-         sec = CreateObject("roRegistrySection", "Authentication")
-         if sec.Exists(key)
-             return sec.Read(key)
-         endif
-         return "invalid"
-    End Function
-
-    Function SetAuthData(userToken As String)
-        sec = CreateObject("roRegistrySection", "Authentication")
-        sec.Write("UserRegistrationToken", userToken)
-        sec.Write("Username", "wonder")
-        sec.Flush()
-        return "set " + userToken
-    End Function
-
-    sub renderGroup()
-
-    end sub
-
-    sub showpanelinfo()
-      panelcontent = m.listpanel.list.content.getChild(m.listpanel.list.itemFocused)
-
-      m.panel.description = panelcontent.description
-
-      m.gridpanel = createObject("roSGNode", "GridPanelExample")
-
-      m.gridpanel.gridcontenturi = panelcontent.url
-    end sub
-
-    sub slidepanels()
-      if not m.panelset.isGoingBack
-        m.panelset.appendChild(m.gridpanel)
-        m.gridpanel.setFocus(true)
-      else
-        m.listpanel.setFocus(true)
-      end if 
-    end sub
-    
-    Function onKeyEvent(key as String, press as Boolean)
-      handled = false
-
-      if press
-          if key = "back"
-            if (m.panelset.visible = true)
-              m.panelset.visible = false
-            else
-              m.panelset.visible = true
-              m.listpanel.setFocus(true)
-            endif
-            'DISPLAY HOME GROUP'
-            if (m.hombe.visible = true)
-              m.hombe.visible = false
-            else
-              m.hombe.visible = true
-              m.bob.setFocus(true)
-            endif
+    'FOR PIN SCREEN'
+      sub renderPinCodeScreen(message=invalid)
+          if message <> invalid then
+            pinMessage = m.top.findNode("pinMessage")
+            pinMessage.text = message
           end if
-      end if
+          
+        'SETUP PIN LABEL'
+          pinLabel = m.top.findNode("pinLabel")
+          pinLabelrect = pinLabel.boundingRect()
+          centerx = (1280 - pinLabelrect.width) / 2
+          centery = (720 - pinLabelrect.height) / 2
+          pinLabel.translation = [ centerx, centery ]
+          m.code = (1000 + Rnd(8999)).ToStr()
+          pinLabel.text = m.code
 
-      return handled
-    end Function
+        'OBSERVE LINK BUTTON TO CHECK URL'
+          m.pinAttemptLink = m.top.findNode("pinAttemptLink")
+          m.pinAttemptLink.observeField("buttonSelected", "attemptLink")
+          m.pinAttemptLink.setFocus(true)
+
+        'ENSURE VIEW RENDERED'
+          m.pinCodeScreen = m.top.findNode("pinCodeScreen")
+          m.pinCodeScreen.visible = true
+        'ENSURE GREETING RENDER VIEW HIDDEN'
+          m.greetingScreen = m.top.findNode("greetingScreen")
+          m.greetingScreen.visible = false
+        'UPDATE CURRENT SCREEN'
+          m.currentScreen = "pin"
+      end sub
+
+      sub attemptLink()
+        m.globalStatus.text = "attemptLink fired"
+        'THIS NEEDS TO BE FOR REMOTE QUERY jsonAsString = ReadAsciiFile("pkg:/json/checkAuth.json/"+ m.code)
+        jsonString = ReadAsciiFile("pkg:/json/auth.json")
+        authCheck = ParseJSON(jsonString)
+        
+        if authCheck.authed = 1 then
+          m.pinCodeScreen.visible = false
+          m.globalStatus.text = "authed" + authCheck.authed.ToStr() + " h:" + authCheck.homeId.ToStr()
+          'SAVE HOME ID IF AUTHED & SET AS GLOBAL VAR'
+          setData("HomeId", authCheck.homeId.ToStr())
+          m.homeId = authCheck.homeId
+          
+          'GET ACTUAL DATA FOR HOME'
+          jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+          m.jzon = ParseJSON(jsonAsString)
+
+          renderHomeScreen()
+        else
+          m.globalStatus.text = "not authed"
+          renderPinCodeScreen("Invalid Pin. Please Try Again.")
+        end if
+      end sub
+    
+    'FOR HOME SCREEN'
+      sub renderHomeScreen()
+        'm.jzon should be populated
+        m.globalStatus.text = "renderHomeScreen fired"
+        
+        m.homeChat = m.top.findNode("homeChat")
+        
+        m.homeMessage = m.top.findNode("homeMessage")
+        m.userPhoto = m.top.findNode("userPhoto")
+        m.homeHeader = m.top.findNode("homeHeader")
+        m.homeByline = m.top.findNode("homeByline")
+        
+        'HEADER TEXT'
+        m.homeHeader.text = m.jzon.welcome_text
+        m.homeByline.text = m.jzon.welcome_text_2
+        m.homeHeader.font.size = 40
+
+        'TOP RIGHT MESSAGE'
+        if m.jzon.message_welcome_enabled = 1 then
+          m.homeChat.visible = true
+          m.homeMessage.text = m.jzon.message_welcome
+          m.userPhoto.uri = "pkg:/images/profile.png"
+        end if
+        
+        'BUTTONS'
+        m.homeOptions = m.top.findNode("homeOptions")
+        m.homeOptions.observeField("buttonSelected", "onHomeButtonSelected")
+        m.homeOptions.setFocus(true)
+        
+        'HIDE/SHOW ALL SCREENS'
+        m.homeScreen.visible = true
+        m.pinCodeScreen.visible = false
+        m.greetingScreen.visible = false
+        m.faqScreen.visible = false
+        m.guideListScreen.visible = false
+        m.guideShowScreen.visible = false
+        
+        'UPDATE CURRENT SCREEN'
+        m.currentScreen = "home"
+      end sub
+
+        function onHomeButtonSelected()
+            if m.homeOptions.buttonSelected = 0 then 
+              m.globalStatus.text = "selected FAQ"
+              renderFAQScreen()
+            else if m.homeOptions.buttonSelected = 1 then
+              m.globalStatus.text = "selected GUIDES"
+              renderGuideListScreen()
+            end if
+        end function
+
+    'FOR FAQ SCREEN'
+      sub renderFAQScreen()
+        m.globalStatus.text = "FAQ fired"
+        
+        
+        m.faqChat = m.top.findNode("faqChat")
+        m.faqMessage = m.top.findNode("faqMessage")
+        m.userPhoto = m.top.findNode("faqUserPhoto")
+
+        if m.jzon.message_need_to_know_enabled = 1 then
+          m.faqChat.visible = true
+          m.faqMessage.text = m.jzon.message_need_to_know
+          m.userPhoto.uri = "pkg:/images/profile.png"
+        end if
+        
+        'HIDE/SHOW ALL SCREENS'
+        m.faqScreen.visible = true
+        m.homeScreen.visible = false
+        m.pinCodeScreen.visible = false
+        m.greetingScreen.visible = false
+        m.guideListScreen.visible = false
+        m.guideShowScreen.visible = false
+        
+        'FOCUS FAQ LIST'
+        focusFAQList("0")
+        
+        'UPDATE CURRENT SCREEN'
+        m.currentScreen = "faq"      
+      end sub
+        
+        sub focusFAQList(buttonIndex as String)
+          itemId = "item" + buttonIndex
+          'SET FAQ ITEM'
+          m.currentFaqItem = m.top.findNode(itemId)
+          m.currentInnerBackground = m.top.findNode(itemId + "innerBackground")
+          m.currentLabelText = m.top.findNode(itemId + "label")
+          m.myScrollableText = m.top.findNode(itemId + "scrollText")
+          
+          'HIGHLIGHT FOCUSED FAQ BUTTON'
+          m.currentInnerBackground.color = "0xFFFFFFFF"
+          m.currentLabelText.color = "0x010101FF"
+          
+          'FOCUS FAQ LIST'
+          m.btnGrp = m.top.findNode("btnGrp")
+          m.btnGrp.observeField("buttonSelected", "onSelect")
+          m.btnGrp.observeField("buttonFocused", "onFocus")
+          m.btnGrp.setFocus(true)
+
+          
+          TRY
+            jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+            m.jbon = ParseJSON(jsonAsString)
+            m.globalStatus.text = "item1"
+            for i_faq=0 to m.jbon.faq.count() -1
+              m.globalStatus.text = "item2"
+              butten = generateButton(i_faq, m.jbon.faq[i_faq].title, m.jbon.faq[i_faq].body)
+              m.globalStatus.text = "item3"
+              m.btnGrp.appendChild(butten)
+              m.globalStatus.text = "item4"
+            end for
+            m.globalStatus.text = "item5"
+          CATCH dfs
+          END TRY
+          
+        end sub
+        
+        function generateButton(index as String, title as String, body as String) As Dynamic
+          'index needs to be a 0 index'
+          button = createObject("roSGNode", "Button")
+            button.id="button" + index         
+            button.height =  "1" 
+            button.focusedIconUri =  "" 
+            button.iconUri= ""
+
+          rectangleOuter = createObject("roSGNode", "Rectangle")
+            RectangleOuter.id="item" + index
+            RectangleOuter.focusable="true"
+            RectangleOuter.width="984"
+            RectangleOuter.height="40"
+            RectangleOuter.color="0xFFFFFFFF"
+          
+          rectangleInner = createObject("roSGNode", "Rectangle")
+            RectangleInner.id="item" + index + "innerBackground"
+            RectangleInner.translation="[2,2]"
+            RectangleInner.width="980"
+            RectangleInner.height="36"
+            RectangleInner.color="0x010101FF"
+
+          layoutGroup = createObject("roSGNode", "LayoutGroup")
+            LayoutGroup.id="faqList"
+            LayoutGroup.itemSpacings="[6,9]"
+            LayoutGroup.addItemSpacingAfterChild="false"
+
+          label = createObject("roSGNode", "Label")
+            Label.id="item" + index + "label"
+            Label.text = title
+            Label.translation="[10,8]"
+
+          scrollableText = createObject("roSGNode", "ScrollableText")
+            ScrollableText.id = "item" + index + "scrollText"
+            ScrollableText.width="970"
+            ScrollableText.height="36"
+            ScrollableText.visible="false"
+            ScrollableText.font = "font:SmallBoldSystemFont"
+            ScrollableText.text = body
+          
+          layoutGroup.appendChild(label)
+          layoutGroup.appendChild(scrollableText)
+          rectangleInner.appendChild(layoutGroup)
+          rectangleOuter.appendChild(rectangleInner)
+          button.appendChild(rectangleOuter)
+
+          return button
+        end function
+
+        sub onSelect()
+          if m.btnGrp.buttonSelected = 0 then 
+            m.globalStatus.text = "selected faq item 0"
+            expandSelectedButton("0")
+          else if m.btnGrp.buttonSelected = 1 then
+            m.globalStatus.text = "selected faq item 1"
+            expandSelectedButton("1")
+          else if m.btnGrp.buttonSelected = 2 then
+            m.globalStatus.text = "selected faq item 1"
+            expandSelectedButton("2")
+          end if
+        end sub
+
+        sub onFocus()
+          if m.btnGrp.buttonFocused = 0 then
+            m.globalStatus.text = "focused faq item 0"
+            showHideAdjacentButtons("0")
+          else if m.btnGrp.buttonFocused = 1 then
+            m.globalStatus.text = "focused faq item 1"
+            showHideAdjacentButtons("1")
+          else if m.btnGrp.buttonFocused = 2 then
+            m.globalStatus.text = "focused faq item 2"
+            showHideAdjacentButtons("2")
+          end if
+        end sub
+
+        sub showHideAdjacentButtons(buttonIndex as String)
+          itemId = "item" + buttonIndex 'SET ITEM KEY'
+          m.globalStatus.text = "focused faq item ID" + itemId
+          
+          'HIDE/RESET PREVIOUS currentFaqItem'
+          m.currentInnerBackground.color = "0x010101FF"
+          m.currentLabelText.color = "0xFFFFFFFF"
+          m.currentFaqItem.height = "40"
+          m.currentInnerBackground.height = "36"
+          m.myScrollableText.visible = "false"
+          m.myScrollableText.height = "36"
+
+          'STORE CURRENT ITEM'
+          m.currentFaqItem = m.top.findNode(itemId)
+          m.currentInnerBackground = m.top.findNode(itemId + "innerBackground")
+          m.currentLabelText = m.top.findNode(itemId + "label")
+          m.myScrollableText = m.top.findNode(itemId + "scrollText")
+          
+          'UPDATE HIGHLIGHTED BUTTON'
+          m.currentInnerBackground.color = "0xFFFFFFFF"
+          m.currentLabelText.color = "0x010101FF"
+        end sub
+
+        sub expandSelectedButton(buttonIndex as String)
+          itemId = "item" + buttonIndex
+          
+          'SELECT CURRENT NODE'
+          m.currentFaqItem = m.top.findNode(itemId)
+          m.currentInnerBackground = m.top.findNode(itemId + "innerBackground")
+          m.currentLabelText = m.top.findNode(itemId + "label")
+          m.myScrollableText = m.top.findNode(itemId + "scrollText")
+
+          'UPDATE CURRENT NODE UI TO DISPLAY'      
+          m.currentFaqItem.height = "244"
+          m.currentInnerBackground.height = "240"
+          m.currentInnerBackground.color = "0x010101FF"
+          m.currentLabelText.color = "0xFFFFFFFF"
+          m.myScrollableText = m.top.findNode(itemId + "scrollText")
+          m.myScrollableText.visible = "true"
+          m.myScrollableText.height = "200"
+          m.myScrollableText.setFocus(true)
+        end sub
+
+    'FOR GUIDE SCREEN'
+      sub renderGuideListScreen()
+        m.globalStatus.text = "GUIDE fired"
+        
+        m.guideChat = m.top.findNode("guideChat")
+        m.guideMessage = m.top.findNode("guideMessage")
+        m.userPhoto = m.top.findNode("guideUserPhoto")
+        m.guideHeader = m.top.findNode("guideHeader")
+        
+        m.guideHeader.font.size = 40
+        
+        if m.jzon.message_things_to_do_enabled = 1 then
+          m.guideChat.visible = true
+          m.guideMessage.text = m.jzon.message_things_to_do
+          m.userPhoto.uri = "pkg:/images/profile.png"
+        end if
+        
+        'HIDE/SHOW ALL SCREENS'
+        m.guideListScreen.visible = true
+        m.guideShowScreen.visible = false
+        m.faqScreen.visible = false
+        m.homeScreen.visible = false
+        m.pinCodeScreen.visible = false
+        m.greetingScreen.visible = false
+        
+        'FOCUS GUIDE GRID'
+        m.posterGrid = m.top.findNode("testPosterGrid")
+        parsedContent = createObject("roSGNode", "ContentNode")
+        'for mdia in m.jzon.vessel_media
+        'm.jzon.vessel_media[m.posterGrid.itemFocused].venues[0].moments[0].media[0].url
+        jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+        m.jbon = ParseJSON(jsonAsString)
+        k = 0
+        while k < 10
+          if m.jbon.vessel_media[k].venues[0].moments.count() > 0 then
+            'm.globalStatus.text = "GUIDE fired" + m.jbon.vessel_media[k].venues[0].moments.count().ToStr()
+            gridPoster = createObject("roSGNode", "ContentNode")
+            'gridPoster.hdgridposterurl = "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/3a20af9863c3478b8ebac708c3c8258a/2eab0559593d4d7d8fc0867a845b4ae4/e84004c963522019653fa6c718e6ffbc.jpg"
+            gridPoster.hdgridposterurl = m.jbon.vessel_media[k].featured_media
+            gridPoster.shortdescriptionline1 = m.jbon.vessel_media[k].title
+            gridPoster.shortdescriptionline2 = m.jbon.vessel_media[k].name
+            parsedContent.appendChild(gridPoster)
+            k++
+          else
+            k++
+          end if
+        end while 
+        
+        m.posterGrid.content = parsedContent
+        m.globalStatus.text = "GUIDE fired1"
+        m.posterGrid.observeField("itemSelected","gridItemSelected")
+        m.posterGrid.observeField("itemFocused", "gridItemFocused")
+        
+        m.posterGrid.setFocus(true)
+        
+        m.globalStatus.text = "GUIDE fired2"
 
 
+
+        'UPDATE CURRENT SCREEN'
+        m.currentScreen = "guide" 
+      end sub
+
+        sub gridItemSelected()
+          m.globalStatus.text = "GUIDE fired"
+          guideId = m.posterGrid.itemSelected
+          TRY
+            m.video.control = "stop"
+          CATCH somfE
+          END TRY
+          renderGuideShowScreen(guideId)
+        end sub
+
+        sub gridItemFocused()
+            m.globalStatus.text = "tryloop"
+        
+            'GRAB GUIDE CONTENT AND VIDEO CONTENT'
+            guide = m.jbon.vessel_media[m.posterGrid.itemFocused]
+            media = m.jbon.vessel_media[m.posterGrid.itemFocused].venues[0].moments[0].media[0]
+            'SELECT PREVIEW NODES'
+            m.video = m.top.findNode("guidePreviewVideo")
+            m.guidePreview = m.top.findNode("guidePreviewPoster")
+          
+          TRY
+            m.videoContent = createObject("RoSGNode", "ContentNode")
+            m.guideImageArray = []
+            m.guideVideoArray = []
+            'ITERATE OVER GUIDE > MOMENTS > MEDIA TO GRAB ALL VIDEO/IMAGE CONTENT'
+            for i_venue=0 to guide.venues.count() -1
+              for i_moment=0 to guide.venues[i_venue].moments.count() -1
+                for i_media=0 to guide.venues[i_venue].moments[0].media.count() -1
+                  media_item = guide.venues[i_venue].moments[0].media[i_media]
+                  if media_item.type = "image"
+                    'WHAT DO WITH IMAGES'
+                    m.guideImageArray.push(media_item.url)
+                  else if media_item.type = "video"
+                    vid = createObject("RoSGNode", "ContentNode")
+                    vid.url = media_item.url
+                    vid.title = "Test Video"
+                    m.guideVideoArray.push(media_item.url)
+                    m.videoContent.appendChild(vid)
+                  end if
+                end for
+              end for
+            end for
+          CATCH somfE
+          END TRY
+
+            m.video.control = "stop"
+
+            m.globalStatus.text = "FUCK YEAH COUNT!" + m.guideImageArray.count().ToStr()
+            'if m.guideImageArray.count() > 0
+            'end if
+            
+            if m.guideImageArray.count() > 0
+              m.video.visible = "false"
+              m.video.height = "0"
+              m.guidePreview.visible = "true"
+              m.guidePreview.height = "460"
+
+              m.guidePreview.uri = m.guideImageArray[0]
+              m.guidePreview.loadwidth = "350"
+              m.globalStatus.text = "FUCK YEAH IMAGES!"
+            end if
+          
+          TRY
+            if m.guideVideoArray.count() > 0
+              m.video.contentIsPlaylist = "true"
+              m.video.loop = "true"
+              m.video.content = m.videoContent
+              m.video.observeField("bufferingStatus", "videoState")
+              m.video.control = "prebuffer"
+            end if
+          CATCH somfE
+          END TRY
+        end sub
+          
+          sub videoState()
+            m.globalStatus.text = "watching!"
+            TRY
+              m.globalStatus.text = "STATE!" + m.video.bufferingStatus.prebufferDone.toStr()
+              if m.video.bufferingStatus.prebufferDone
+                m.guidePreview.visible = "false"
+                m.guidePreview.height = "0"
+                m.video.visible = "true"
+                m.video.height = "460"
+                m.video.control = "play"
+              end if
+            CATCH somfE
+            END TRY
+          end sub
+      
+    'VENUE LIST SHOW SCREEN'
+      sub renderGuideShowScreen(guideId as Integer)
+        m.globalStatus.text = "GUIDE Show fired" + guideId.ToStr()
+        m.globalGuideId = GuideId
+
+        m.guideShowChat = m.top.findNode("guideShowChat")
+        m.guideShowMessage = m.top.findNode("guideShowMessage")
+        m.userPhoto = m.top.findNode("guideShowUserPhoto")
+        m.guideShowHeader = m.top.findNode("guideShowHeader")
+        
+        
+        m.guideShowHeader.font.size = 40
+        
+        if m.jzon.message_things_to_do_enabled = 1 then
+          m.guideShowChat.visible = true
+          m.guideShowMessage.text = m.jzon.message_things_to_do
+          m.userPhoto.uri = "pkg:/images/profile.png"
+        end if  
+          
+        m.guideShowScreen.visible = true
+        m.guideListScreen.visible = false
+        m.faqScreen.visible = false
+        m.homeScreen.visible = false
+        m.pinCodeScreen.visible = false
+        m.greetingScreen.visible = false
+
+        m.currentScreen = "guideShow"
+        
+        'GENERATE VENUE LIST'
+        m.venueList = m.top.findNode("venueList")
+        parsedVenueNameContent = createObject("roSGNode", "ContentNode")
+        'GRAB JSON'
+        jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+        m.jbon = ParseJSON(jsonAsString)
+        'SET OBSERVERS'
+        m.venueList.observeField("itemSelected","venuListItemSelected")
+        m.venueList.observeField("itemFocused", "venuListItemFocused")
+        'SET FOCUS'
+        m.venueList.setFocus(true)
+        'CREATE LIST VIA ENUMERATION'
+        for venueId=0 to m.jbon.vessel_media[guideId].venues.count() -1
+            listLabel = createObject("roSGNode", "ContentNode")
+            listLabel.title = m.jbon.vessel_media[guideId].venues[venueId].name
+            parsedVenueNameContent.appendChild(listLabel)
+        end for
+        m.venueList.content = parsedVenueNameContent
+      end sub
+
+        sub venuListItemSelected()
+          m.globalStatus.text = "venue fired"
+          venueId = m.venueList.itemSelected
+          m.globalStatus.text = "venue fired " + venueId.ToStr()
+        end sub
+
+        sub venuListItemFocused()
+          TRY
+            venueId = m.venueList.itemFocused
+            m.venuePreview = m.top.findNode("venuePreviewPoster")
+            m.venuePreview.uri = m.jbon.vessel_media[m.globalGuideId].venues[venueId].moments[0].media[0].url
+            'm.venuePreview.loadDisplayMode = "scaleToZoom"
+            m.venuePreview.loadwidth = "350"
+            m.globalStatus.text = m.jbon.vessel_media[m.globalGuideId].venues[venueId].moments[0].media[0].url
+            m.venueQRCode = m.top.findNode("venueQRCode")
+            m.venueQRCode.uri = "pkg:/images/qr100.png"
+            'm.globalStatus.text = "GUIDE fired" + m.venueList.itemFocused.ToStr()
+          CATCH somfE
+          END TRY
+        end sub
+
+    'GLOBAL UTILITIES'
+      'THESE ARE DATA STORAGE SET/GETTERS'
+      Function getData( key as String) As String
+        sec = CreateObject("roRegistrySection", "Authentication")
+        if sec.Exists(key)
+          return sec.Read(key)
+        endif
+        return "invalid"
+      End Function
+
+      Function setData(key As String, storedValue As String)
+        sec = CreateObject("roRegistrySection", "Authentication")
+        sec.Write(key, storedValue)
+        'sec.Write("Username", "wonder")
+        sec.Flush() 'THIS LINE IS WHAT SAVES VALUES'
+        return "set"
+      End Function
+
+      Function deleteData(key As String)
+        sec = CreateObject("roRegistrySection", "Authentication")
+        sec.Delete(key)
+        'sec.Write("Username", "wonder")
+        'sec.Flush() 'THIS LINE IS WHAT SAVES VALUES'
+        return "delete " + userToken
+      End Function
+      
+      Function onKeyEvent(key as String, press as Boolean)
+        handled = false
+        if m.currentScreen = "init"
+        else if m.currentScreen = "pin"
+        else if m.currentScreen = "home"
+        else if m.currentScreen = "guideShow"
+          if press
+            if key = "back"
+              renderGuideListScreen()
+            end if
+          end if
+        else if m.currentScreen = "guide"
+          if press
+            if key = "back"
+              m.video.control = "stop"
+              renderHomeScreen()
+            end if
+          end if
+        else if m.currentScreen = "faq"
+          if press
+              if key = "back"
+                'MUST BE DONE IN THIS ORDER TO GRAB CORRECT INDEX'
+                if m.currentFaqItem.hasFocus() then
+                  showHideAdjacentButtons("0") 'THIS IS HACKY, NEED TO CHANGE FOCUS TOO'
+                  renderHomeScreen()
+                else if m.currentFaqItem.isInFocusChain() then
+                  m.globalStatus.text = "RECKT HAS FOCUS CHAIN BRO"
+                  m.btnGrp.setFocus(true)
+                  currentButton = m.btnGrp.buttonFocused.ToStr()
+                  showHideAdjacentButtons(currentButton)
+                else if m.btnGrp.isInFocusChain() then
+                  showHideAdjacentButtons("0") 'THIS IS HACKY, NEED TO CHANGE FOCUS TOO'
+                  renderHomeScreen()
+                  m.globalStatus.text = "btnGrp HAS FOCUS CHAIN BRO"
+                else
+                  m.globalStatus.text = "ELSE BRO"
+                end if
+              end if
+          end if
+        else
+          if press
+              if key = "back"
+              end if
+          end if
+        end if
+        return handled
+      end Function
 
     ]]>
 
   </script>
 
   <children>
-    'BELOW HERE IS IN PROGRESS'
-    <Group id="homeScreen">
-      <LayoutGroup id="home_welcome_text">
-          <Label/> <Poster=user_image />
-      </LayoutGroup>
-      <LayoutGroup id="hometext">
-      </LayoutGroup>
+    <Group id="globalStatusView" visible="true">
       <LayoutGroup>
-        <ButtonGroup>
-          <Button/>
-          <Button/>
+        <Label id="globalStatus" 
+               text="init" />
+      </LayoutGroup>
+    </Group>
+
+    <Group id="greetingScreen" visible="true">
+      <LayoutGroup>
+        <Label id="greetingHello" 
+               text="Welcome to NewCo" />
+      </LayoutGroup>
+    </Group>
+    
+    <Group id="pinCodeScreen" visible="false">
+      <LayoutGroup translation="[0,0]">
+        <Rectangle width="1340" height="780" color="0x010101FF" />
+      </LayoutGroup>
+      <LayoutGroup translation="[215,69]">
+        <Label id="pinMessage"/>
+        <Label id="pinLabel"/>
+        <Label id="pinInstructions" 
+               text="Visit newco.com/link and add this pin to your property"/>
+        <Button id="pinAttemptLink" focusedIconUri="" iconUri=""
+                text="Press OK once you've added link code."/>
+      </LayoutGroup>
+    </Group>
+
+    <Group id="homeScreen" visible="false">
+      <LayoutGroup translation="[20,20]">
+        <Rectangle width="1240" height="680" color="0x010101BE" />
+      </LayoutGroup>    
+      <LayoutGroup id="homeChat" visible="false" translation="[120,40]" layoutDirection="horiz" vertAlignment="center">
+        <Label id="homeMessage" width="1040" ellipsizeOnBoundary="true" horizAlign="right"/>
+        <Poster id="userPhoto"
+                height="80"
+                width="80"/>
+      </LayoutGroup>
+      <LayoutGroup id="hero" translation="[215,200]" itemSpacings="[30,50]">
+        <Label id="homeHeader" />
+        <Label id="homeByline" />
+        <ButtonGroup id="homeOptions" layoutDirection="horiz" itemSpacings="[30]">
+          <Button text="WHAT YOU NEED TO KNOW" focusedIconUri="" iconUri="" />
+          <Button text="THINGS TO DO" focusedIconUri="" iconUri="" />
         </ButtonGroup>
       </LayoutGroup>
     </Group>
 
-    <Group id="faqScreen">
-      iterator = 0
-      loop over sections >
-        add button > visible id0
-        add text area > hidden id0
-      end 
-      onKeyEvent
-      if down
-        what focus.id
-        focus(focus.id + 0)
-      end
-      <LayoutGroup id="faq_welcome_text">
-          <Label /><Poster=user_image />
+    <Group id="faqScreen" visible="false">
+      <LayoutGroup translation="[20,20]">
+        <Rectangle width="1240" height="680" color="0x010101BE" />
       </LayoutGroup>
-      <LayoutGroup id="faqtextitems">
-        <Label id=title01>
-        <Label id=body01> 
+      <LayoutGroup id="faqChat" visible="false" translation="[120,40]" layoutDirection="horiz" vertAlignment="center">
+        <Label id="faqMessage" width="1040" ellipsizeOnBoundary="true" horizAlign="right"/>
+        <Poster id="faqUserPhoto"
+                height="80"
+                width="80"/>
       </LayoutGroup>
-    </Group>
-    
-    <Group id="guides">
-      <LayoutGroup id="guide_welcome_text">
-          <Label/><Poster=user_image />
+      <LayoutGroup id="faqHero" translation="[100,130]">
+        <Label id="faqHeader" text="EVERYTHING YOU NEED TO KNOW" />
+        <Label id="faqByline" text="Frequently asked questions, along with a few additional details about the home." />
       </LayoutGroup>
-      <LayoutGroup id="hometext">
-      </LayoutGroup>
-      <LayoutGroup id=guidegrid>
-        <Poster></Poster>  <Poster></Poster>
-        <Poster></Poster>  <Poster></Poster>
-        <Poster></Poster>  <Poster></Poster>
-      </LayoutGroup>
-      <LayoutGroup id=guidepreview>
-        <Poster>
-        </Poster>
-        function rotateImageEveryN
-        end
-      </LayoutGroup>
-    </Group>
-    'ABOVE HERE IS IN PROGRESS'
-    
-    'BELOW HERE IS WORKING'
-    <Group id="guideDetails">
-      <LayoutGroup id="detail header">
-      </LayoutGroup>
-      <LayoutGroup id=guidegrid>
-        <Poster id=01>resteraount</Poster>
-        <Poster id=02>resteraount</Poster>
-        <Poster id=03>resteraount</Poster>
-      </LayoutGroup>
-      counter = 0
-      loop resteraunt for 
-        add Poster.id = "post" + counter
-        add listener(counter) on focus delete and render new guidepreviewRender
-        counter ++
-      end
-      function guidePreviewRender
-        get focus id, 
-        localVar = get tag with venueMedia + focus id
-        localVar/venueMedia.image = item 01
-      end
-      <LayoutGroup id=guidepreview>
-        <Poster id=venueMedia>
-        </Poster>
-        function rotateImageEveryN
-        end
-      </LayoutGroup>
-    </Group>  
-
-    <Group
-      id="homeGroup"
-      visible="true">
-      <LayoutGroup
-        id="homeLayoutGroup"
-        translation="[215,69]">
-        <ButtonGroup
-          id="bob"
-          layoutDirection="horiz">
-          <Button
-            focusedIconUri=""
-            iconUri=""
-            text="ALL THE THINGS"/>
-          <Button
-            focusedIconUri=""
-            iconUri=""
-            text="YOU SHOULD KNOW"/>
+      <LayoutGroup translation="[113,207]">
+        <ButtonGroup id="btnGrp">
+          <Button id="button0" height="1" focusedIconUri="" iconUri="">
+            <Rectangle id="item0" focusable="true" width="984" height="40" color="0xFFFFFFFF">
+              <Rectangle id="item0innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
+                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
+                  <Label id="item0label" text="Cleaning" translation="[10,8]" />
+                  <ScrollableText 
+                    id = "item0scrollText"
+                    width="970"
+                    height="36"
+                    visible="false"
+                    font = "font:SmallBoldSystemFont"
+                    text = "Make sure you clean everything up."
+                  />
+                </LayoutGroup>
+              </Rectangle>
+            </Rectangle>
+          </Button>
+          <Button id="button1" height="1" focusedIconUri="" iconUri="">
+            <Rectangle id="item1" focusable="true" width="984" height="40" color="0xFFFFFFFF">
+              <Rectangle id="item1innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
+                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
+                  <Label id="item1label" text="Roku" translation="[10,8]" />
+                  <ScrollableText 
+                    id = "item1scrollText"
+                    width="970"
+                    height="36"
+                    visible="false"
+                    font = "font:SmallBoldSystemFont"
+                    text = "Netflix is pre setup so you don't need to add your info."
+                  />
+                </LayoutGroup>
+              </Rectangle>
+            </Rectangle>
+          </Button>
+          <Button id="button2" height="1" focusedIconUri="" iconUri="">
+            <Rectangle id="item2" focusable="true" width="984" height="40" color="0xFFFFFFFF">
+              <Rectangle id="item2innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
+                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
+                  <Label id="item2label" text="FAQ" translation="[10,8]" />
+                  <ScrollableText 
+                    id = "item2scrollText"
+                    width="970"
+                    height="36"
+                    visible="false"
+                    font = "font:SmallBoldSystemFont"
+                    text = "We make tequila in the guest bathroom so please avoid it."
+                  />
+                </LayoutGroup>
+              </Rectangle>
+            </Rectangle>
+          </Button>
         </ButtonGroup>
-        <Label
-          id = "infoLabel" 
-          height="0"
-          horizAlign="right"
-          text="hello there, welcome!"
-          translation="[0,0]"
-          width="522"
-          wrap = "true" />
-        <Label
-          id = "auth" 
-          height="0"
-          horizAlign="right"
-          text="z"
-          translation="[0,0]"
-          width="522"
-          wrap = "true" />          
       </LayoutGroup>
+    </Group>    
+
+    <Group id="guideListScreen" visible="false">
+      <LayoutGroup translation="[20,20]">
+        <Rectangle width="1240" height="680" color="0x010101BE" />
+      </LayoutGroup>
+      <LayoutGroup id="guideChat" visible="false" translation="[120,40]" layoutDirection="horiz" vertAlignment="center">
+        <Label id="guideMessage" width="1040" ellipsizeOnBoundary="true" horizAlign="right"/>
+        <Poster id="guideUserPhoto"
+                height="80"
+                width="80"/>
+      </LayoutGroup>
+      <LayoutGroup id="guideHero" translation="[60,80]">
+        <Label id="guideHeader" text="HAPPENING NEAR YOU" />
+        <Label id="guideByline" text="Curated content from local enthusiasts all in one place to give you the very best expierence." />
+      </LayoutGroup>
+      <LayoutGroup translation="[60,174]">
+        <PosterGrid
+          id="testPosterGrid"
+          basePosterSize="[300,200]"
+          itemSpacing="[32,32]"
+          caption1NumLines="1"
+          caption2NumLines="1"
+          numColumns="2"
+          numRows="6"
+          />
+      </LayoutGroup>
+      <LayoutGroup id="guidePreviewImage" translation="[850,190]">
+          <Poster id="guidePreviewPoster"
+            width="350"
+            height="460"
+            loadDisplayMode="loadDisplayMode"
+            />
+        </LayoutGroup>      
+        <LayoutGroup id="guidePreviewMovie" translation="[850,190]">
+          <Video id="guidePreviewVideo"
+            width="350"
+            height="460"
+            loadDisplayMode="loadDisplayMode"
+            />  
+        </LayoutGroup>
     </Group>
+    
+    <Group id="guideShowScreen" visible="false">
+      <LayoutGroup translation="[20,20]">
+        <Rectangle width="1240" height="680" color="0x010101BE" />
+      </LayoutGroup>
+      <LayoutGroup id="guideShowChat" visible="false" translation="[120,40]" layoutDirection="horiz" vertAlignment="center">
+        <Label id="guideShowMessage" width="1040" ellipsizeOnBoundary="true" horizAlign="right"/>
+        <Poster id="guideShowUserPhoto"
+                height="80"
+                width="80"/>
+      </LayoutGroup>
+      <LayoutGroup id="guideShowHero" translation="[60,80]">
+        <Label id="guideShowHeader" text="HAPPENING NEAR YOU" />
+        <Label id="guideShowByline" wrap="true" width="700" text="Curated content from local enthusiasts all in one place to give you the very best expierence." />
+      </LayoutGroup>
+      <LayoutGroup translation="[60,234]">
+        <LabelList
+          id = "venueList"
+          itemSize = "[440,48]" />
+      </LayoutGroup>
+      <LayoutGroup id="venuePreview" translation="[1000,120]" horizAlignment="center">
+          <Poster id="venuePreviewPoster"
+            width="350"
+            height="460"
+            loadDisplayMode="loadDisplayMode"
+            />
+          <Poster id="venueQRCode"
+            width="100"
+            height="100"
+            loadDisplayMode="loadDisplayMode"
+            />
+        </LayoutGroup>
+    </Group>    
+
 
   </children>
 </component>

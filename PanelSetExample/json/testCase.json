@@ -1,17 +1,17 @@
 {
   "id": 2,
-  "roku_pin": 1234,
+  "roku_pin": 4234,
   "profile_image": "profile.png",
   "address": "2335 E Cesar Chavez ST, Austin, TX 78702",
   "welcome_text": "WELCOME TO AUSTIN",
-  "welcome_text_2": "Call 555-555-555 if you need anything!",
+  "welcome_text_2": "Call 555-555-5555 if you need anything!",
   "welcome_media": "house.jpg",
   "qrCode": "qr200.png",
   "message_welcome": "Welcome to my home, enjoy your time here!",
   "message_welcome_enabled": 1,
   "message_need_to_know": "These house guides will make sure you get the most out of your stay!",
   "message_need_to_know_enabled": 1,
-  "message_things_to_do": "These are some of my favorite local spots! Enjoy :-)",
+  "message_things_to_do": "These are some of my favorite local spots! Enjoy :-) hey!",
   "message_things_to_do_enabled": 1,
   "faq": [{
       "title": "Wifi",
@@ -32,7 +32,8 @@
       "guid": "b543eac0-6d67-4cd4-b7f5-b796a516a7b3",
       "title": "The Best Margaritas in Austin 2018",
       "description": "In honor of National Tequila Day, we put together a list of the places you would most likely be able to find us celebrating this important holiday. Frozen or rocks, chile-salted rims, or no salt at all; here are our favorite spots in Austin for margaritas in 2018.",
-      "venues": [{
+      "venues": [
+        {
           "guid": "beda2e1d-0f5f-42b6-b9a2-e3424cb2880f",
           "isActive": "true",
           "buttons": [{
