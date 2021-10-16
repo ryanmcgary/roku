@@ -24,6 +24,8 @@
             m.guideShowScreen = m.top.findNode("guideShowScreen")
           'INIT HELPERS'
           m.video = m.top.findNode("guidePreviewVideo") 'NEED THIS TO MAKE SURE SHIT DONT BREAK'
+          m.videoVenue = m.top.findNode("venuePreviewVideo") 'NEED THIS TO MAKE SURE SHIT DONT BREAK'
+
 
         'SPLASH SCREEN'
         m.top.backgroundURI = "pkg:/images/house.jpg"
@@ -98,7 +100,8 @@
           'GET ACTUAL DATA FOR HOME'
           jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
           m.jzon = ParseJSON(jsonAsString)
-
+          
+          initFAQScreen()
           renderHomeScreen()
         else
           m.globalStatus.text = "not authed"
@@ -158,13 +161,33 @@
         end function
 
     'FOR FAQ SCREEN'
+      sub initFAQScreen()
+        m.btnGrp = m.top.findNode("btnGrp")
+        
+        TRY
+          jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
+          m.jbon = ParseJSON(jsonAsString)
+          m.globalStatus.text = "item1"
+          for i_faq=0 to m.jbon.faq.count() -1
+            m.globalStatus.text = "item2"
+            butten = generateButton(i_faq.ToStr(), m.jbon.faq[i_faq].title, m.jbon.faq[i_faq].body)
+            m.globalStatus.text = "item3"
+            m.btnGrp.appendChild(butten)
+            m.globalStatus.text = "item4"
+          end for
+          m.globalStatus.text = "item5"
+        CATCH dfs
+        END TRY
+      end sub
+
       sub renderFAQScreen()
         m.globalStatus.text = "FAQ fired"
-        
         
         m.faqChat = m.top.findNode("faqChat")
         m.faqMessage = m.top.findNode("faqMessage")
         m.userPhoto = m.top.findNode("faqUserPhoto")
+        m.faqHeader = m.top.findNode("faqHeader")
+        m.faqHeader.font.size = 40
 
         if m.jzon.message_need_to_know_enabled = 1 then
           m.faqChat.visible = true
@@ -179,7 +202,7 @@
         m.greetingScreen.visible = false
         m.guideListScreen.visible = false
         m.guideShowScreen.visible = false
-        
+
         'FOCUS FAQ LIST'
         focusFAQList("0")
         
@@ -203,58 +226,43 @@
           m.btnGrp = m.top.findNode("btnGrp")
           m.btnGrp.observeField("buttonSelected", "onSelect")
           m.btnGrp.observeField("buttonFocused", "onFocus")
-          m.btnGrp.setFocus(true)
-
-          
-          TRY
-            jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")
-            m.jbon = ParseJSON(jsonAsString)
-            m.globalStatus.text = "item1"
-            for i_faq=0 to m.jbon.faq.count() -1
-              m.globalStatus.text = "item2"
-              butten = generateButton(i_faq, m.jbon.faq[i_faq].title, m.jbon.faq[i_faq].body)
-              m.globalStatus.text = "item3"
-              m.btnGrp.appendChild(butten)
-              m.globalStatus.text = "item4"
-            end for
-            m.globalStatus.text = "item5"
-          CATCH dfs
-          END TRY
+          m.currentFaqItem.setFocus(true)
           
         end sub
         
         function generateButton(index as String, title as String, body as String) As Dynamic
+          m.globalStatus.text = "but1"
           'index needs to be a 0 index'
           button = createObject("roSGNode", "Button")
             button.id="button" + index         
             button.height =  "1" 
             button.focusedIconUri =  "" 
             button.iconUri= ""
-
+          m.globalStatus.text = "but2"
           rectangleOuter = createObject("roSGNode", "Rectangle")
             RectangleOuter.id="item" + index
             RectangleOuter.focusable="true"
             RectangleOuter.width="984"
             RectangleOuter.height="40"
             RectangleOuter.color="0xFFFFFFFF"
-          
+          m.globalStatus.text = "but3"
           rectangleInner = createObject("roSGNode", "Rectangle")
             RectangleInner.id="item" + index + "innerBackground"
             RectangleInner.translation="[2,2]"
             RectangleInner.width="980"
             RectangleInner.height="36"
             RectangleInner.color="0x010101FF"
-
+          m.globalStatus.text = "but4"
           layoutGroup = createObject("roSGNode", "LayoutGroup")
             LayoutGroup.id="faqList"
             LayoutGroup.itemSpacings="[6,9]"
             LayoutGroup.addItemSpacingAfterChild="false"
-
+          m.globalStatus.text = "but5"
           label = createObject("roSGNode", "Label")
             Label.id="item" + index + "label"
             Label.text = title
             Label.translation="[10,8]"
-
+          m.globalStatus.text = "but6"
           scrollableText = createObject("roSGNode", "ScrollableText")
             ScrollableText.id = "item" + index + "scrollText"
             ScrollableText.width="970"
@@ -262,13 +270,13 @@
             ScrollableText.visible="false"
             ScrollableText.font = "font:SmallBoldSystemFont"
             ScrollableText.text = body
-          
+          m.globalStatus.text = "but7"
           layoutGroup.appendChild(label)
           layoutGroup.appendChild(scrollableText)
           rectangleInner.appendChild(layoutGroup)
           rectangleOuter.appendChild(rectangleInner)
           button.appendChild(rectangleOuter)
-
+          m.globalStatus.text = "but9"
           return button
         end function
 
@@ -459,7 +467,7 @@
               m.video.visible = "false"
               m.video.height = "0"
               m.guidePreview.visible = "true"
-              m.guidePreview.height = "460"
+              m.guidePreview.height = "540"
 
               m.guidePreview.uri = m.guideImageArray[0]
               m.guidePreview.loadwidth = "350"
@@ -486,7 +494,7 @@
                 m.guidePreview.visible = "false"
                 m.guidePreview.height = "0"
                 m.video.visible = "true"
-                m.video.height = "460"
+                m.video.height = "540"
                 m.video.control = "play"
               end if
             CATCH somfE
@@ -549,18 +557,87 @@
 
         sub venuListItemFocused()
           TRY
-            venueId = m.venueList.itemFocused
-            m.venuePreview = m.top.findNode("venuePreviewPoster")
-            m.venuePreview.uri = m.jbon.vessel_media[m.globalGuideId].venues[venueId].moments[0].media[0].url
-            'm.venuePreview.loadDisplayMode = "scaleToZoom"
+          m.videoVenue.control = "stop"
+          m.globalStatus.text = "venue try1"
+        
+          venueId = m.venueList.itemFocused
+          
+          guide = m.jbon.vessel_media[m.globalGuideId]
+          media = m.jbon.vessel_media[m.globalGuideId].venues[venueId].moments[0].media[0]
+          venueQrCode = guide.venues[venueId].qrcode
+          'SELECT PREVIEW NODES'
+          m.videoVenue = m.top.findNode("venuePreviewVideo")
+          m.videoVenue.height = "0"
+
+          m.venuePreview = m.top.findNode("venuePreviewPoster")
+          m.globalStatus.text = "venue try2"
+          m.videoVenueContent = createObject("RoSGNode", "ContentNode")
+          m.venueImageArray = []
+          m.venueVideoArray = []
+          'ITERATE OVER MEDIA TO GRAB ALL VIDEO/IMAGE CONTENT'
+          m.globalStatus.text = "venue tryZ" + guide.venues[venueId].moments[0].media.count().ToStr()
+          for i_media=0 to guide.venues[venueId].moments[0].media.count() -1
+            media_item = guide.venues[venueId].moments[0].media[i_media]
+            if media_item.type = "image"
+              'WHAT DO WITH IMAGES'
+              m.venueImageArray.push(media_item.url)
+            else if media_item.type = "video"
+              vid = createObject("RoSGNode", "ContentNode")
+              vid.url = media_item.url
+              vid.title = "Test Video"
+              m.venueVideoArray.push(media_item.url)
+              m.videoVenueContent.appendChild(vid)
+            end if
+          end for
+
+          m.videoVenue.control = "stop"
+
+          if m.venueImageArray.count() > 0
+            m.videoVenue.visible = "false"
+            m.videoVenue.height = "0"
+            m.venuePreview.visible = "true"
+            m.venuePreview.height = "540"
+
             m.venuePreview.loadwidth = "350"
-            m.globalStatus.text = m.jbon.vessel_media[m.globalGuideId].venues[venueId].moments[0].media[0].url
-            m.venueQRCode = m.top.findNode("venueQRCode")
-            m.venueQRCode.uri = "pkg:/images/qr100.png"
-            'm.globalStatus.text = "GUIDE fired" + m.venueList.itemFocused.ToStr()
+            m.venuePreview.loadDisplayMode = "scaleToZoom"
+            m.venuePreview.uri = m.venueImageArray[0]
+          end if
+          
+          if m.venueVideoArray.count() > 0
+            m.videoVenue.contentIsPlaylist = "true"
+            m.videoVenue.loop = "true"
+            m.videoVenue.content = m.videoVenueContent
+            m.venuePreview.visible = "false"
+            m.venuePreview.height = "0"
+            m.videoVenue.visible = "true"
+            m.videoVenue.height = "540"
+            m.videoVenue.control = "play"
+            'TWO ITEMS BELOW WERE CAUSING ROKU TO CRASH'
+            'm.videoVenue.observeField("bufferingStatus", "videoVenueState")
+            'm.videoVenue.control = "prebuffer"
+          end if
+
+          m.venueQRCode = m.top.findNode("venueQRCode")
+          m.venueQRCode.uri = venueQrCode
           CATCH somfE
           END TRY
         end sub
+          
+          sub videoVenueState()
+            'LEAVING THIS IN WAS CAUSING ROKU DEVICE TO CRASH
+            'm.globalStatus.text = "watching!"
+            'TRY
+            '  if m.videoVenue.bufferingStatus.prebufferDone
+            '    m.venuePreview.visible = "false"
+            '    m.venuePreview.height = "0"
+            '    m.videoVenue.visible = "true"
+            '    m.videoVenue.height = "540"
+            '    m.videoVenue.control = "play"
+            '  end if
+            'CATCH somfE
+            'END TRY
+          end sub
+
 
     'GLOBAL UTILITIES'
       'THESE ARE DATA STORAGE SET/GETTERS'
@@ -596,6 +673,7 @@
         else if m.currentScreen = "guideShow"
           if press
             if key = "back"
+              m.videoVenue.control = "stop"
               renderGuideListScreen()
             end if
           end if
@@ -699,63 +777,12 @@
                 height="80"
                 width="80"/>
       </LayoutGroup>
-      <LayoutGroup id="faqHero" translation="[100,130]">
+      <LayoutGroup id="faqHero" translation="[100,130]" itemSpacing="[8]">
         <Label id="faqHeader" text="EVERYTHING YOU NEED TO KNOW" />
         <Label id="faqByline" text="Frequently asked questions, along with a few additional details about the home." />
       </LayoutGroup>
-      <LayoutGroup translation="[113,207]">
+      <LayoutGroup translation="[113,227]">
         <ButtonGroup id="btnGrp">
-          <Button id="button0" height="1" focusedIconUri="" iconUri="">
-            <Rectangle id="item0" focusable="true" width="984" height="40" color="0xFFFFFFFF">
-              <Rectangle id="item0innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
-                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
-                  <Label id="item0label" text="Cleaning" translation="[10,8]" />
-                  <ScrollableText 
-                    id = "item0scrollText"
-                    width="970"
-                    height="36"
-                    visible="false"
-                    font = "font:SmallBoldSystemFont"
-                    text = "Make sure you clean everything up."
-                  />
-                </LayoutGroup>
-              </Rectangle>
-            </Rectangle>
-          </Button>
-          <Button id="button1" height="1" focusedIconUri="" iconUri="">
-            <Rectangle id="item1" focusable="true" width="984" height="40" color="0xFFFFFFFF">
-              <Rectangle id="item1innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
-                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
-                  <Label id="item1label" text="Roku" translation="[10,8]" />
-                  <ScrollableText 
-                    id = "item1scrollText"
-                    width="970"
-                    height="36"
-                    visible="false"
-                    font = "font:SmallBoldSystemFont"
-                    text = "Netflix is pre setup so you don't need to add your info."
-                  />
-                </LayoutGroup>
-              </Rectangle>
-            </Rectangle>
-          </Button>
-          <Button id="button2" height="1" focusedIconUri="" iconUri="">
-            <Rectangle id="item2" focusable="true" width="984" height="40" color="0xFFFFFFFF">
-              <Rectangle id="item2innerBackground" translation="[2,2]" width="980" height="36" color="0x010101FF">
-                <LayoutGroup id="faqList" itemSpacings="[6,9]" addItemSpacingAfterChild="false">
-                  <Label id="item2label" text="FAQ" translation="[10,8]" />
-                  <ScrollableText 
-                    id = "item2scrollText"
-                    width="970"
-                    height="36"
-                    visible="false"
-                    font = "font:SmallBoldSystemFont"
-                    text = "We make tequila in the guest bathroom so please avoid it."
-                  />
-                </LayoutGroup>
-              </Rectangle>
-            </Rectangle>
-          </Button>
         </ButtonGroup>
       </LayoutGroup>
     </Group>    
@@ -772,9 +799,9 @@
       </LayoutGroup>
       <LayoutGroup id="guideHero" translation="[60,80]">
         <Label id="guideHeader" text="HAPPENING NEAR YOU" />
-        <Label id="guideByline" text="Curated content from local enthusiasts all in one place to give you the very best expierence." />
+        <Label id="guideShowByline" wrap="true" width="700" text="Curated content from local enthusiasts all in one place to give you the very best experience." />
       </LayoutGroup>
-      <LayoutGroup translation="[60,174]">
+      <LayoutGroup translation="[60,190]">
         <PosterGrid
           id="testPosterGrid"
           basePosterSize="[300,200]"
@@ -785,20 +812,19 @@
           numRows="6"
           />
       </LayoutGroup>
-      <LayoutGroup id="guidePreviewImage" translation="[850,190]">
-          <Poster id="guidePreviewPoster"
-            width="350"
-            height="460"
-            loadDisplayMode="loadDisplayMode"
-            />
-        </LayoutGroup>      
-        <LayoutGroup id="guidePreviewMovie" translation="[850,190]">
-          <Video id="guidePreviewVideo"
-            width="350"
-            height="460"
-            loadDisplayMode="loadDisplayMode"
-            />  
-        </LayoutGroup>
+      <LayoutGroup id="guidePreviewImage" translation="[850,120]">
+        <Poster id="guidePreviewPoster"
+          width="350"
+          height="540"
+          loadDisplayMode="scaleToZoom"
+          />
+      </LayoutGroup>      
+      <LayoutGroup id="guidePreviewMovie" translation="[850,120]">
+        <Video id="guidePreviewVideo"
+          width="350"
+          height="540"
+          />  
+      </LayoutGroup>
     </Group>
     
     <Group id="guideShowScreen" visible="false">
@@ -813,25 +839,33 @@
       </LayoutGroup>
       <LayoutGroup id="guideShowHero" translation="[60,80]">
         <Label id="guideShowHeader" text="HAPPENING NEAR YOU" />
-        <Label id="guideShowByline" wrap="true" width="700" text="Curated content from local enthusiasts all in one place to give you the very best expierence." />
+        <Label id="guideShowByline" wrap="true" width="700" text="Curated content from local enthusiasts all in one place to give you the very best experience." />
       </LayoutGroup>
       <LayoutGroup translation="[60,234]">
         <LabelList
           id = "venueList"
-          itemSize = "[440,48]" />
+          itemSize = "[540,48]" />
       </LayoutGroup>
-      <LayoutGroup id="venuePreview" translation="[1000,120]" horizAlignment="center">
-          <Poster id="venuePreviewPoster"
-            width="350"
-            height="460"
-            loadDisplayMode="loadDisplayMode"
-            />
-          <Poster id="venueQRCode"
-            width="100"
-            height="100"
-            loadDisplayMode="loadDisplayMode"
-            />
-        </LayoutGroup>
+      
+      <LayoutGroup id="venuePreviewImage" translation="[1025,120]" horizAlignment="center">
+        <Poster id="venuePreviewPoster"
+          width="350"
+          height="540"
+          loadDisplayMode="scaleToZoom"
+          />
+      </LayoutGroup> 
+      <LayoutGroup id="venuePreviewMovie" translation="[1025,120]" horizAlignment="center">
+        <Video id="venuePreviewVideo"
+          width="350"
+          height="540"
+          />  
+      </LayoutGroup>
+      <LayoutGroup translation="[1025,590]" horizAlignment="center">
+        <Poster id="venueQRCode"
+          width="100"
+          height="100"
+          />
+      </LayoutGroup>
     </Group>    
 
 

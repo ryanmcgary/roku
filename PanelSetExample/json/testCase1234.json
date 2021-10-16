@@ -1,21 +1,21 @@
 {
   "id": 2,
-  "roku_pin": 4234,
+  "roku_pin": 1234,
   "profile_image": "profile.png",
   "address": "2335 E Cesar Chavez ST, Austin, TX 78702",
   "welcome_text": "WELCOME TO AUSTIN",
-  "welcome_text_2": "Call 555-555-5555 if you need anything!",
+  "welcome_text_2": "Call 555-555-555 if you need anything!",
   "welcome_media": "house.jpg",
   "qrCode": "qr200.png",
   "message_welcome": "Welcome to my home, enjoy your time here!",
   "message_welcome_enabled": 1,
   "message_need_to_know": "These house guides will make sure you get the most out of your stay!",
   "message_need_to_know_enabled": 1,
-  "message_things_to_do": "These are some of my favorite local spots! Enjoy :-) hey!",
+  "message_things_to_do": "These are some of my favorite local spots! Enjoy :-)",
   "message_things_to_do_enabled": 1,
   "faq": [{
       "title": "Wifi",
-      "body": "SSID: welcomeToAustin Password: itsapasswordman"
+      "body": "SSID: welcomeToAustin\nPassword: itsapasswordman"
     },
     {
       "title": "Cleaning",
@@ -28,13 +28,11 @@
   ],
   "vessel_media": [{
       "name": "365 Things Austin",
-      "qrcode": "pkg:/images/qr100.png",
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/599d697016b643db9e5285ce9b979159/dfe4b296697fa2322dbae9d77fb0db43.jpg",
       "guid": "b543eac0-6d67-4cd4-b7f5-b796a516a7b3",
       "title": "The Best Margaritas in Austin 2018",
       "description": "In honor of National Tequila Day, we put together a list of the places you would most likely be able to find us celebrating this important holiday. Frozen or rocks, chile-salted rims, or no salt at all; here are our favorite spots in Austin for margaritas in 2018.",
-      "venues": [
-        {
+      "venues": [{
           "guid": "beda2e1d-0f5f-42b6-b9a2-e3424cb2880f",
           "isActive": "true",
           "buttons": [{
@@ -70,13 +68,11 @@
               "style": ""
             },
             "name": "La Condesa",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "400 West 2nd Street A, Austin",
             "phone": "(512) 499-0300",
             "tags": []
           },
           "name": "La Condesa",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "400 West 2nd Street A, Austin",
           "phone": "(512) 499-0300",
           "coords": {
@@ -129,13 +125,11 @@
               "style": ""
             },
             "name": "Fresa's ",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1703 S 1st St",
             "phone": "(512) 992-2946",
             "tags": []
           },
           "name": "Fresa's ",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1703 S 1st St",
           "phone": "(512) 992-2946",
           "coords": {
@@ -170,13 +164,11 @@
           "overrides": {
             "pin": {},
             "name": "Licha's Cantina",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1306 East 6th Street, Austin",
             "phone": "(512) 480-5960",
             "tags": []
           },
           "name": "Licha's Cantina",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1306 East 6th Street, Austin",
           "phone": "(512) 480-5960",
           "coords": {
@@ -215,13 +207,11 @@
           "overrides": {
             "pin": {},
             "name": "Ranch 616",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "616 Nueces Street, Austin",
             "phone": "(512) 479-7616",
             "tags": []
           },
           "name": "Ranch 616",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "616 Nueces Street, Austin",
           "phone": "(512) 479-7616",
           "coords": {
@@ -260,13 +250,11 @@
           "overrides": {
             "pin": {},
             "name": "Curra's Grill",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "614 East Oltorf Street, Austin",
             "phone": "(512) 444-0012",
             "tags": []
           },
           "name": "Curra's Grill",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "614 East Oltorf Street, Austin",
           "phone": "(512) 444-0012",
           "coords": {
@@ -301,13 +289,11 @@
           "overrides": {
             "pin": {},
             "name": "Trudy's Texas Star",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "409 West 30th Street, Austin",
             "phone": "(512) 477-2935",
             "tags": []
           },
           "name": "Trudy's Texas Star",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "409 West 30th Street, Austin",
           "phone": "(512) 477-2935",
           "coords": {
@@ -346,13 +332,11 @@
           "overrides": {
             "pin": {},
             "name": "Fonda San Miguel",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2330 West North Loop Boulevard, Austin",
             "phone": "(512) 459-4121",
             "tags": []
           },
           "name": "Fonda San Miguel",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2330 West North Loop Boulevard, Austin",
           "phone": "(512) 459-4121",
           "coords": {
@@ -391,13 +375,11 @@
           "overrides": {
             "pin": {},
             "name": "Vivo ",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "6406 N Interstate Hwy 35",
             "phone": "(512) 407-8302",
             "tags": []
           },
           "name": "Vivo ",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "6406 N Interstate Hwy 35",
           "phone": "(512) 407-8302",
           "coords": {
@@ -432,13 +414,11 @@
           "overrides": {
             "pin": {},
             "name": "Matt's El Rancho",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2613 South Lamar Boulevard, Austin",
             "phone": "(512) 462-9333",
             "tags": []
           },
           "name": "Matt's El Rancho",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2613 South Lamar Boulevard, Austin",
           "phone": "(512) 462-9333",
           "coords": {
@@ -473,13 +453,11 @@
           "overrides": {
             "pin": {},
             "name": "Hula Hut",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "3825 Lake Austin Boulevard, Austin",
             "phone": "(512) 476-4852",
             "tags": []
           },
           "name": "Hula Hut",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "3825 Lake Austin Boulevard, Austin",
           "phone": "(512) 476-4852",
           "coords": {
@@ -518,13 +496,11 @@
           "overrides": {
             "pin": {},
             "name": "El Alma",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1025 Barton Springs Road, Austin",
             "phone": "(512) 609-8923",
             "tags": []
           },
           "name": "El Alma",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1025 Barton Springs Road, Austin",
           "phone": "(512) 609-8923",
           "coords": {
@@ -559,13 +535,11 @@
           "overrides": {
             "pin": {},
             "name": "Polvo's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2004 S 1st St, Austin",
             "phone": "(512) 441-5446",
             "tags": []
           },
           "name": "Polvo's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2004 S 1st St, Austin",
           "phone": "(512) 441-5446",
           "coords": {
@@ -606,7 +580,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/3a20af9863c3478b8ebac708c3c8258a/2eab0559593d4d7d8fc0867a845b4ae4/e84004c963522019653fa6c718e6ffbc.jpg",
       "name": "Austin Food Magazine",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/3a20af9863c3478b8ebac708c3c8258a/logo/9f3b933a0a3a5a6421dd2d7834da8029.jpg",
       "pins": {
         "type": "static",
@@ -643,13 +616,11 @@
           "overrides": {
             "pin": {},
             "name": "24 Diner",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "76CW+Q7 Austin, Texas",
             "phone": "(512) 472-5400",
             "tags": []
           },
           "name": "24 Diner",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "76CW+Q7 Austin, Texas",
           "phone": "(512) 472-5400",
           "coords": {
@@ -679,13 +650,11 @@
           "overrides": {
             "pin": {},
             "name": "1886 Cafe and Bakery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "604 Brazos St, Austin, TX 78701",
             "phone": "(512) 391-7066",
             "tags": []
           },
           "name": "1886 Cafe and Bakery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "604 Brazos St, Austin, TX 78701",
           "phone": "(512) 391-7066",
           "coords": {
@@ -734,13 +703,11 @@
               "style": ""
             },
             "name": "Blue Dahlia Bistro",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1115 East 11th Street, Austin",
             "phone": "(512) 542-9542",
             "tags": []
           },
           "name": "Blue Dahlia Bistro",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1115 East 11th Street, Austin",
           "phone": "(512) 542-9542",
           "coords": {
@@ -785,7 +752,6 @@
               "style": ""
             },
             "name": "Houndstooth Coffee",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "401 Congress Avenue #100c, Austin",
             "phone": "(512) 394-6051",
             "tags": [
@@ -795,7 +761,6 @@
             ]
           },
           "name": "Houndstooth Coffee",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "401 Congress Avenue #100c, Austin",
           "phone": "(512) 394-6051",
           "coords": {
@@ -834,13 +799,11 @@
           "overrides": {
             "pin": {},
             "name": "Moonshine Grill",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "303 Red River St, Austin, TX 78701",
             "phone": "(512) 236-9599",
             "tags": []
           },
           "name": "Moonshine Grill",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "303 Red River St, Austin, TX 78701",
           "phone": "(512) 236-9599",
           "coords": {
@@ -870,13 +833,11 @@
           "overrides": {
             "pin": {},
             "name": "Upstairs at Caroline",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "7795+G3 Austin, Texas",
             "phone": "(512) 982-6766",
             "tags": []
           },
           "name": "Upstairs at Caroline",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "7795+G3 Austin, Texas",
           "phone": "(512) 982-6766",
           "coords": {
@@ -908,13 +869,11 @@
               "style": ""
             },
             "name": "Meteor Cafe Austin",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2110 S Congress Ave, Austin, TX 78704 ",
             "phone": "",
             "tags": []
           },
           "name": "Meteor Cafe Austin",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2110 S Congress Ave, Austin, TX 78704 ",
           "phone": "",
           "coords": {
@@ -946,13 +905,11 @@
               "style": ""
             },
             "name": "Ooga Booga Waffles",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "5000 Burnet Rd, Austin, TX 78756, USA",
             "phone": "(817) 727-6954",
             "tags": []
           },
           "name": "Ooga Booga Waffles",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "5000 Burnet Rd, Austin, TX 78756, USA",
           "phone": "(817) 727-6954",
           "coords": {
@@ -993,7 +950,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/3a20af9863c3478b8ebac708c3c8258a/2eab0559593d4d7d8fc0867a845b4ae4/7c648bad258136a8942b86f0fe951247.jpg",
       "name": "Austin Food Magazine",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/3a20af9863c3478b8ebac708c3c8258a/logo/9f3b933a0a3a5a6421dd2d7834da8029.jpg",
       "pins": {
         "type": "static",
@@ -1025,13 +981,11 @@
           "overrides": {
             "pin": {},
             "name": "COVER 3 Anderson Lane",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1717 W 6th St, Austin, TX 78703",
             "phone": "(512) 982-1550",
             "tags": []
           },
           "name": "COVER 3 Anderson Lane",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1717 W 6th St, Austin, TX 78703",
           "phone": "(512) 982-1550",
           "coords": {
@@ -1066,13 +1020,11 @@
           "overrides": {
             "pin": {},
             "name": "Lavaca Street - Downtown",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "405 Lavaca Street, Austin",
             "phone": "512.469.0106",
             "tags": []
           },
           "name": "Lavaca Street - Downtown",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "405 Lavaca Street, Austin",
           "phone": "512.469.0106",
           "coords": {
@@ -1111,13 +1063,11 @@
           "overrides": {
             "pin": {},
             "name": "Basecamp",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "120 W 5th St, Austin, TX 78701",
             "phone": "(512) 394-7391",
             "tags": []
           },
           "name": "Basecamp",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "120 W 5th St, Austin, TX 78701",
           "phone": "(512) 394-7391",
           "coords": {
@@ -1160,13 +1110,11 @@
           "overrides": {
             "pin": {},
             "name": "backYARD at Waller Creek",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "701 E 11th St, Austin, TX 78701",
             "phone": "(512) 478-1111",
             "tags": []
           },
           "name": "backYARD at Waller Creek",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "701 E 11th St, Austin, TX 78701",
           "phone": "(512) 478-1111",
           "coords": {
@@ -1205,13 +1153,11 @@
           "overrides": {
             "pin": {},
             "name": "The Switch",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "166 Hargraves Dr Suite G-100, Austin, TX 78737",
             "phone": "(512) 212-7211",
             "tags": []
           },
           "name": "The Switch",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "166 Hargraves Dr Suite G-100, Austin, TX 78737",
           "phone": "(512) 212-7211",
           "coords": {
@@ -1241,13 +1187,11 @@
           "overrides": {
             "pin": {},
             "name": "The Local Post Pub",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "7113 Burnet Rd, Austin, TX 78757",
             "phone": "(512) 375-5599",
             "tags": []
           },
           "name": "The Local Post Pub",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "7113 Burnet Rd, Austin, TX 78757",
           "phone": "(512) 375-5599",
           "coords": {
@@ -1290,13 +1234,11 @@
           "overrides": {
             "pin": {},
             "name": "Pluckers - Rio Grande",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2222 Rio Grande St, Austin",
             "phone": "(512) 469-9464",
             "tags": []
           },
           "name": "Pluckers - Rio Grande",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2222 Rio Grande St, Austin",
           "phone": "(512) 469-9464",
           "coords": {
@@ -1347,13 +1289,11 @@
           "overrides": {
             "pin": {},
             "name": "Punch Bowl Social Austin",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11310 Domain Drive, Austin",
             "phone": "(512) 368-9070",
             "tags": []
           },
           "name": "Punch Bowl Social Austin",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11310 Domain Drive, Austin",
           "phone": "(512) 368-9070",
           "coords": {
@@ -1388,13 +1328,11 @@
           "overrides": {
             "pin": {},
             "name": "The Park at the Domain",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11601 Domain Drive #200, Austin",
             "phone": "(512) 478-7275",
             "tags": []
           },
           "name": "The Park at the Domain",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11601 Domain Drive #200, Austin",
           "phone": "(512) 478-7275",
           "coords": {
@@ -1441,13 +1379,11 @@
           "overrides": {
             "pin": {},
             "name": "Sam's Boat - Stonelake",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "10931 Stonelake Blvd, Austin, TX 78759",
             "phone": "(512) 502-0404",
             "tags": []
           },
           "name": "Sam's Boat - Stonelake",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "10931 Stonelake Blvd, Austin, TX 78759",
           "phone": "(512) 502-0404",
           "coords": {
@@ -1486,13 +1422,11 @@
           "overrides": {
             "pin": {},
             "name": "Jack & Ginger's Irish Pub",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11500B Rock Rose, Austin",
             "phone": "(512) 350-3738",
             "tags": []
           },
           "name": "Jack & Ginger's Irish Pub",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11500B Rock Rose, Austin",
           "phone": "(512) 350-3738",
           "coords": {
@@ -1543,13 +1477,11 @@
           "overrides": {
             "pin": {},
             "name": "Haymaker",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2310 Manor Road, Austin",
             "phone": "(512) 243-6702",
             "tags": []
           },
           "name": "Haymaker",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2310 Manor Road, Austin",
           "phone": "(512) 243-6702",
           "coords": {
@@ -1590,7 +1522,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5283e68c0a8a43f3b8ab45f028f81995/6c6d2c80c84449158e1d7fc7fafb62c3/0dd74a087e3d524333d1c3bba318ed2a.jpg",
       "name": "Test Co.",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5283e68c0a8a43f3b8ab45f028f81995/logo/a4ea3716b7324f2c2db11fcfce63e7a7.jpg",
       "pins": {
         "type": "static",
@@ -1621,13 +1552,11 @@
               "style": ""
             },
             "name": "Hornitos Mexican Food Restaurant & Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "E 38th St, Austin, TX 78705, USA",
             "phone": "",
             "tags": []
           },
           "name": "Hornitos Mexican Food Restaurant & Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "E 38th St, Austin, TX 78705, USA",
           "phone": "",
           "coords": {
@@ -1659,13 +1588,11 @@
               "style": ""
             },
             "name": "Gemma",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2323 N Henderson Ave #109, Dallas, TX 75206, USA",
             "phone": "(214) 370-9426",
             "tags": []
           },
           "name": "Gemma",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2323 N Henderson Ave #109, Dallas, TX 75206, USA",
           "phone": "(214) 370-9426",
           "coords": {
@@ -1695,13 +1622,11 @@
           "overrides": {
             "pin": {},
             "name": "La Chilanguita",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "408 East Rundberg Lane, Austin",
             "phone": "2162564725",
             "tags": []
           },
           "name": "La Chilanguita",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "408 East Rundberg Lane, Austin",
           "phone": "2162564725",
           "coords": {
@@ -1730,13 +1655,11 @@
               "style": "blue1"
             },
             "name": "Unit-D Pizzeria",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11133 A Pinehurst Dr.",
             "phone": "",
             "tags": []
           },
           "name": "Unit-D Pizzeria",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11133 A Pinehurst Dr.",
           "phone": "",
           "coords": {
@@ -1777,7 +1700,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/599d697016b643db9e5285ce9b979159/a078e98b49c272995bd43523d9766c1d.jpg",
       "name": "365 Things Austin",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/logo/c6e1adce472f84ae6a84f836e081b7ae.jpg",
       "pins": {
         "type": "static",
@@ -1788,8 +1710,7 @@
       },
       "media_url": "https://local.vesselguides.com:5555/s3",
       "pins_url": "https://local.vesselguides.com:5555/s3",
-      "venues": [
-        {
+      "venues": [{
           "guid": "6f2461aa-acc0-4f59-ba05-ed0193e9e133",
           "isActive": "true",
           "buttons": [{
@@ -1819,13 +1740,11 @@
           "overrides": {
             "pin": {},
             "name": "Hops and Grain Brewing",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "507 Calles St #101, Austin, TX 78702",
             "phone": "(512) 914-2467",
             "tags": []
           },
           "name": "Hops and Grain Brewing",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "507 Calles St #101, Austin, TX 78702",
           "phone": "(512) 914-2467",
           "coords": {
@@ -1864,13 +1783,11 @@
           "overrides": {
             "pin": {},
             "name": "Zilker Brewing Company and Taproom",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1701 E 6th St, Austin, TX 78702",
             "phone": "(512) 765-4946",
             "tags": []
           },
           "name": "Zilker Brewing Company and Taproom",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1701 E 6th St, Austin, TX 78702",
           "phone": "(512) 765-4946",
           "coords": {
@@ -1913,13 +1830,11 @@
           "overrides": {
             "pin": {},
             "name": "Pinthouse Pizza - Burnet",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "4729 Burnet Road, Austin",
             "phone": "(512) 436-9605",
             "tags": []
           },
           "name": "Pinthouse Pizza - Burnet",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "4729 Burnet Road, Austin",
           "phone": "(512) 436-9605",
           "coords": {
@@ -1958,13 +1873,11 @@
           "overrides": {
             "pin": {},
             "name": "The ABGB",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1305 West Oltorf Street, Austin",
             "phone": "(512) 298-2242",
             "tags": []
           },
           "name": "The ABGB",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1305 West Oltorf Street, Austin",
           "phone": "(512) 298-2242",
           "coords": {
@@ -2011,13 +1924,11 @@
           "overrides": {
             "pin": {},
             "name": "Austin Beerworks",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "3001 Industrial Terrace, Austin, TX 78758",
             "phone": "(512) 821-2494",
             "tags": []
           },
           "name": "Austin Beerworks",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "3001 Industrial Terrace, Austin, TX 78758",
           "phone": "(512) 821-2494",
           "coords": {
@@ -2052,13 +1963,11 @@
           "overrides": {
             "pin": {},
             "name": "Jester King Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "13187 Fitzhugh Rd, Austin, TX 78736",
             "phone": "",
             "tags": []
           },
           "name": "Jester King Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "13187 Fitzhugh Rd, Austin, TX 78736",
           "phone": "",
           "coords": {
@@ -2097,13 +2006,11 @@
           "overrides": {
             "pin": {},
             "name": "St. Elmo Brewing Company",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "440 E St Elmo Rd G-2, Austin, TX 78745",
             "phone": "(737) 300-1965",
             "tags": []
           },
           "name": "St. Elmo Brewing Company",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "440 E St Elmo Rd G-2, Austin, TX 78745",
           "phone": "(737) 300-1965",
           "coords": {
@@ -2146,13 +2053,11 @@
           "overrides": {
             "pin": {},
             "name": "Adelbert's Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2314 Rutland Dr #100, Austin, TX 78758",
             "phone": "(512) 662-1462",
             "tags": []
           },
           "name": "Adelbert's Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2314 Rutland Dr #100, Austin, TX 78758",
           "phone": "(512) 662-1462",
           "coords": {
@@ -2193,7 +2098,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/d1d1c7065f2f4ef6928f8146f86b2c03/1bd72c4a9b0f483b9fa400710fbe063a/e2cfcf629ff74fbc63dc54b62a6428cd.jpg",
       "name": "griotmedia",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -2230,13 +2134,11 @@
           "overrides": {
             "pin": {},
             "name": "Oasis On Lake Travis",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "Austin",
             "phone": "(512) 992-0938",
             "tags": []
           },
           "name": "Oasis On Lake Travis",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "Austin",
           "phone": "(512) 992-0938",
           "coords": {
@@ -2266,13 +2168,11 @@
           "overrides": {
             "pin": {},
             "name": "RAS Day Fest",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1106 E 11th street Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "RAS Day Fest",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1106 E 11th street Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -2302,13 +2202,11 @@
           "overrides": {
             "pin": {},
             "name": "Live Oak Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1615 Crozier Lane, Del Valle, TX 78617",
             "phone": "512-385-2299",
             "tags": []
           },
           "name": "Live Oak Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1615 Crozier Lane, Del Valle, TX 78617",
           "phone": "512-385-2299",
           "coords": {
@@ -2347,13 +2245,11 @@
           "overrides": {
             "pin": {},
             "name": "Rosé Wednesdays at Trace",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "200 Lavaca St, Austin",
             "phone": "(512) 542-3660",
             "tags": []
           },
           "name": "Rosé Wednesdays at Trace",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "200 Lavaca St, Austin",
           "phone": "(512) 542-3660",
           "coords": {
@@ -2388,13 +2284,11 @@
           "overrides": {
             "pin": {},
             "name": "The Groove Theory",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "310 Colorado Street, Suite B",
             "phone": "512) 297-2196",
             "tags": []
           },
           "name": "The Groove Theory",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "310 Colorado Street, Suite B",
           "phone": "512) 297-2196",
           "coords": {
@@ -2435,7 +2329,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/dacfdb17df4d4e7fa351ffd4cc84d197/5797656ffb034381ae93fbf21510895c/a9503c43ba6141fd5518011678df5805.jpg",
       "name": "Resplendent Hospitality",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/dacfdb17df4d4e7fa351ffd4cc84d197/logo/d23251aa66f606c7b2b2b6743bd5dce6.jpg",
       "pins": {
         "type": "static",
@@ -2467,13 +2360,11 @@
           "overrides": {
             "pin": {},
             "name": "24 Diner",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "600 North Lamar Boulevard, Austin",
             "phone": "(512) 472-5400",
             "tags": []
           },
           "name": "24 Diner",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "600 North Lamar Boulevard, Austin",
           "phone": "(512) 472-5400",
           "coords": {
@@ -2503,13 +2394,11 @@
           "overrides": {
             "pin": {},
             "name": "Argus Cidery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "12345 Pauls Valley Rd #2, Austin, TX 78737",
             "phone": "",
             "tags": []
           },
           "name": "Argus Cidery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "12345 Pauls Valley Rd #2, Austin, TX 78737",
           "phone": "",
           "coords": {
@@ -2539,13 +2428,11 @@
           "overrides": {
             "pin": {},
             "name": "Aviary Wine & Kitchen",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2110 South Lamar Blvd C, Austin",
             "phone": "(512) 916-4445",
             "tags": []
           },
           "name": "Aviary Wine & Kitchen",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2110 South Lamar Blvd C, Austin",
           "phone": "(512) 916-4445",
           "coords": {
@@ -2575,13 +2462,11 @@
           "overrides": {
             "pin": {},
             "name": "Barley Swine",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "6555 Burnet Road #400, Austin",
             "phone": "(512) 394-8150",
             "tags": []
           },
           "name": "Barley Swine",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "6555 Burnet Road #400, Austin",
           "phone": "(512) 394-8150",
           "coords": {
@@ -2611,13 +2496,11 @@
           "overrides": {
             "pin": {},
             "name": "Bird Bird Biscuit",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2701 Manor Rd, Austin, TX 78722",
             "phone": "(512) 761-4922",
             "tags": []
           },
           "name": "Bird Bird Biscuit",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2701 Manor Rd, Austin, TX 78722",
           "phone": "(512) 761-4922",
           "coords": {
@@ -2647,13 +2530,11 @@
           "overrides": {
             "pin": {},
             "name": "Clementine",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2195 NW Military Hwy, San Antonio, TX 78213",
             "phone": "(210) 503-5121",
             "tags": []
           },
           "name": "Clementine",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2195 NW Military Hwy, San Antonio, TX 78213",
           "phone": "(210) 503-5121",
           "coords": {
@@ -2683,13 +2564,11 @@
           "overrides": {
             "pin": {},
             "name": "Contigo",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2027 Anchor Lane, Austin",
             "phone": "(512) 614-2260",
             "tags": []
           },
           "name": "Contigo",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2027 Anchor Lane, Austin",
           "phone": "(512) 614-2260",
           "coords": {
@@ -2719,13 +2598,11 @@
           "overrides": {
             "pin": {},
             "name": "Contigo Fareground",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "111 Congress Avenue suite p400, Austin",
             "phone": "(512) 212-1211",
             "tags": []
           },
           "name": "Contigo Fareground",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "111 Congress Avenue suite p400, Austin",
           "phone": "(512) 212-1211",
           "coords": {
@@ -2755,13 +2632,11 @@
           "overrides": {
             "pin": {},
             "name": "CookBook Cafe",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "Austin Central Library, Austin, TX 78701",
             "phone": "",
             "tags": []
           },
           "name": "CookBook Cafe",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "Austin Central Library, Austin, TX 78701",
           "phone": "",
           "coords": {
@@ -2791,13 +2666,11 @@
           "overrides": {
             "pin": {},
             "name": "Drink Well",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "207 E 53rd St, Austin, TX 78751",
             "phone": "(512) 614-6683",
             "tags": []
           },
           "name": "Drink Well",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "207 E 53rd St, Austin, TX 78751",
           "phone": "(512) 614-6683",
           "coords": {
@@ -2827,13 +2700,11 @@
           "overrides": {
             "pin": {},
             "name": "ÉPICERIE",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2307 Hancock Dr, Austin, TX 78756",
             "phone": "(512) 371-6840",
             "tags": []
           },
           "name": "ÉPICERIE",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2307 Hancock Dr, Austin, TX 78756",
           "phone": "(512) 371-6840",
           "coords": {
@@ -2860,13 +2731,11 @@
           "overrides": {
             "pin": {},
             "name": "Eden East",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "755 Springdale Rd, Austin, TX 78702",
             "phone": "(512) 428-6500",
             "tags": []
           },
           "name": "Eden East",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "755 Springdale Rd, Austin, TX 78702",
           "phone": "(512) 428-6500",
           "coords": {
@@ -2896,13 +2765,11 @@
           "overrides": {
             "pin": {},
             "name": "Fareground",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "111 Congress Avenue, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Fareground",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "111 Congress Avenue, Austin",
           "phone": "",
           "coords": {
@@ -2943,7 +2810,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/d1d1c7065f2f4ef6928f8146f86b2c03/49489731022f4f97832d47239e33012f/6c713c4ee108dfa26cc64f94f13f9167.jpg",
       "name": "griotmedia",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -2975,13 +2841,11 @@
           "overrides": {
             "pin": {},
             "name": "Raina Gradford at Bear Creek Performance Training",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "12925 Lowden Ln Manchaca, TX 78652",
             "phone": "5126931565",
             "tags": []
           },
           "name": "Raina Gradford at Bear Creek Performance Training",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "12925 Lowden Ln Manchaca, TX 78652",
           "phone": "5126931565",
           "coords": {
@@ -3011,13 +2875,11 @@
           "overrides": {
             "pin": {},
             "name": "Jasmine Roussell at Guan Yin Tea House",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "4706 North Interstate Highway 35, Austin",
             "phone": "5126868323",
             "tags": []
           },
           "name": "Jasmine Roussell at Guan Yin Tea House",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "4706 North Interstate Highway 35, Austin",
           "phone": "5126868323",
           "coords": {
@@ -3047,13 +2909,11 @@
           "overrides": {
             "pin": {},
             "name": "Melanie Holst-Collins at Soma Vida",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2324 E Cesar Chavez Austin, TX 78702",
             "phone": "5126281580",
             "tags": []
           },
           "name": "Melanie Holst-Collins at Soma Vida",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2324 E Cesar Chavez Austin, TX 78702",
           "phone": "5126281580",
           "coords": {
@@ -3083,13 +2943,11 @@
           "overrides": {
             "pin": {},
             "name": "Julie Vickers Westervelt at Lifetime Fitness South",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "7101 Mopac Expy Austin, Tx 78749",
             "phone": "5123588171",
             "tags": []
           },
           "name": "Julie Vickers Westervelt at Lifetime Fitness South",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "7101 Mopac Expy Austin, Tx 78749",
           "phone": "5123588171",
           "coords": {
@@ -3119,13 +2977,11 @@
           "overrides": {
             "pin": {},
             "name": "Tierra Denae at Rose Movement Studio",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2015 E Riverside Drive",
             "phone": "5129566846",
             "tags": []
           },
           "name": "Tierra Denae at Rose Movement Studio",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2015 E Riverside Drive",
           "phone": "5129566846",
           "coords": {
@@ -3166,7 +3022,6 @@
       "scroll_lock": true,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5283e68c0a8a43f3b8ab45f028f81995/bd4f004ba79d4fa184934054abeaaa1c/05a96a9c8448ca8e32232b3e04930d44.jpg",
       "name": "Test Co.",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5283e68c0a8a43f3b8ab45f028f81995/logo/a4ea3716b7324f2c2db11fcfce63e7a7.jpg",
       "pins": {
         "type": "static",
@@ -3209,13 +3064,11 @@
               "style": ""
             },
             "name": "The Hightower",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1209 East 7th Street, Austin",
             "phone": "(512) 524-1448",
             "tags": []
           },
           "name": "The Hightower",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1209 East 7th Street, Austin",
           "phone": "(512) 524-1448",
           "coords": {
@@ -3256,13 +3109,11 @@
               "style": ""
             },
             "name": "VICECREME",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "6550 Comanche Trail #109, Austin",
             "phone": "(512) 531-9811",
             "tags": []
           },
           "name": "VICECREME",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "6550 Comanche Trail #109, Austin",
           "phone": "(512) 531-9811",
           "coords": {
@@ -3299,13 +3150,11 @@
               "style": ""
             },
             "name": "JuiceLand",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1900A E Martin Luther King Jr Blvd, Austin, TX 78722",
             "phone": "(512) 519-9806",
             "tags": []
           },
           "name": "JuiceLand",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1900A E Martin Luther King Jr Blvd, Austin, TX 78722",
           "phone": "(512) 519-9806",
           "coords": {
@@ -3358,13 +3207,11 @@
               "style": ""
             },
             "name": "Voodoo Doughnut",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "212 E 6th St, Austin, TX 78701",
             "phone": "(512) 215-8586",
             "tags": []
           },
           "name": "Voodoo Doughnut",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "212 E 6th St, Austin, TX 78701",
           "phone": "(512) 215-8586",
           "coords": {
@@ -3401,13 +3248,11 @@
               "style": ""
             },
             "name": "Cold Cookie Co",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2512 Rio Grande St, Austin, TX 78705",
             "phone": "(512) 720-2334",
             "tags": []
           },
           "name": "Cold Cookie Co",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2512 Rio Grande St, Austin, TX 78705",
           "phone": "(512) 720-2334",
           "coords": {
@@ -3448,13 +3293,11 @@
               "style": ""
             },
             "name": "Longhorn Chicken",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2512 Rio Grande Street, Austin",
             "phone": "(512) 720-2334",
             "tags": []
           },
           "name": "Longhorn Chicken",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2512 Rio Grande Street, Austin",
           "phone": "(512) 720-2334",
           "coords": {
@@ -3495,13 +3338,11 @@
               "style": ""
             },
             "name": "Chi'lantro",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11005 Burnet Road #108, Austin",
             "phone": "(512) 852-8789",
             "tags": []
           },
           "name": "Chi'lantro",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11005 Burnet Road #108, Austin",
           "phone": "(512) 852-8789",
           "coords": {
@@ -3542,13 +3383,11 @@
               "style": ""
             },
             "name": "Aviary Wine & Kitchen",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2110 South Lamar Blvd C, Austin",
             "phone": "(512) 916-4445",
             "tags": []
           },
           "name": "Aviary Wine & Kitchen",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2110 South Lamar Blvd C, Austin",
           "phone": "(512) 916-4445",
           "coords": {
@@ -3589,7 +3428,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/d1d1c7065f2f4ef6928f8146f86b2c03/49489731022f4f97832d47239e33012f/05b57f468230710b939a78f1bcc86043.jpg",
       "name": "griotmedia",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -3630,13 +3468,11 @@
           "overrides": {
             "pin": {},
             "name": "Little Lucy's Donuts",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "74 Rainey St Austin TX 78701",
             "phone": "",
             "tags": []
           },
           "name": "Little Lucy's Donuts",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "74 Rainey St Austin TX 78701",
           "phone": "",
           "coords": {
@@ -3679,13 +3515,11 @@
           "overrides": {
             "pin": {},
             "name": "Valentina's Tex Mex BBQ",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11500 Manchaca Road Austin, TX 78748",
             "phone": "",
             "tags": []
           },
           "name": "Valentina's Tex Mex BBQ",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11500 Manchaca Road Austin, TX 78748",
           "phone": "",
           "coords": {
@@ -3724,13 +3558,11 @@
           "overrides": {
             "pin": {},
             "name": "Eastside Cafe",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2113 Manor Rd, Austin, TX 78722",
             "phone": "(512) 476-5858",
             "tags": []
           },
           "name": "Eastside Cafe",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2113 Manor Rd, Austin, TX 78722",
           "phone": "(512) 476-5858",
           "coords": {
@@ -3760,13 +3592,11 @@
           "overrides": {
             "pin": {},
             "name": "Chi'Lantro",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "823 Congress Avenue, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Chi'Lantro",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "823 Congress Avenue, Austin",
           "phone": "",
           "coords": {
@@ -3809,13 +3639,11 @@
           "overrides": {
             "pin": {},
             "name": "Hey Cupcake",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1511 South Congress Ave Austin, TX 78704",
             "phone": "",
             "tags": []
           },
           "name": "Hey Cupcake",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1511 South Congress Ave Austin, TX 78704",
           "phone": "",
           "coords": {
@@ -3856,7 +3684,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5dba4891d59c41f78274a1b523d594a2/1680eba565ee40ccaea37e4fa89ce8c4/328e3002a219938a49e27c360d10f40d.jpg",
       "name": "AustinFoodstagram",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -3888,13 +3715,11 @@
           "overrides": {
             "pin": {},
             "name": "Veracruz All Natural Food Truck",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1704 East Cesar Chavez Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Veracruz All Natural Food Truck",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1704 East Cesar Chavez Street, Austin",
           "phone": "",
           "coords": {
@@ -3924,13 +3749,11 @@
           "overrides": {
             "pin": {},
             "name": "Pueblo Viejo",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "502 Brushy Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Pueblo Viejo",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "502 Brushy Street, Austin",
           "phone": "",
           "coords": {
@@ -3960,13 +3783,11 @@
           "overrides": {
             "pin": {},
             "name": "Taco Flats",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "5520 Burnet Road #101, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Taco Flats",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "5520 Burnet Road #101, Austin",
           "phone": "",
           "coords": {
@@ -3996,13 +3817,11 @@
           "overrides": {
             "pin": {},
             "name": "Velvet Taco",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11501 Rock Rose Suite 160, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Velvet Taco",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11501 Rock Rose Suite 160, Austin",
           "phone": "",
           "coords": {
@@ -4032,13 +3851,11 @@
           "overrides": {
             "pin": {},
             "name": "Tacos Al Pastor",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1917 E Riverside Dr, Austin, TX 78741",
             "phone": "",
             "tags": []
           },
           "name": "Tacos Al Pastor",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1917 E Riverside Dr, Austin, TX 78741",
           "phone": "",
           "coords": {
@@ -4068,13 +3885,11 @@
           "overrides": {
             "pin": {},
             "name": "Tacodeli",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1500 Spyglass Drive, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Tacodeli",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1500 Spyglass Drive, Austin",
           "phone": "",
           "coords": {
@@ -4104,13 +3919,11 @@
           "overrides": {
             "pin": {},
             "name": "Maria's Taco Xpress",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2529 S Lamar Blvd, Austin, TX 78704",
             "phone": "512.444.0261",
             "tags": []
           },
           "name": "Maria's Taco Xpress",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2529 S Lamar Blvd, Austin, TX 78704",
           "phone": "512.444.0261",
           "coords": {
@@ -4140,13 +3953,11 @@
           "overrides": {
             "pin": {},
             "name": "Valentina's Tex Mex BBQ",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "11500 Manchaca Rd, Austin, TX 78745",
             "phone": "",
             "tags": []
           },
           "name": "Valentina's Tex Mex BBQ",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "11500 Manchaca Rd, Austin, TX 78745",
           "phone": "",
           "coords": {
@@ -4176,13 +3987,11 @@
           "overrides": {
             "pin": {},
             "name": "Torchy's Tacos",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1801 E. 51st St, Bldg D, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Torchy's Tacos",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1801 E. 51st St, Bldg D, Austin",
           "phone": "",
           "coords": {
@@ -4212,13 +4021,11 @@
           "overrides": {
             "pin": {},
             "name": "Taco Joint",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "134 E Riverside Dr Austin, TX 78704",
             "phone": "(512) 599-5144",
             "tags": []
           },
           "name": "Taco Joint",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "134 E Riverside Dr Austin, TX 78704",
           "phone": "(512) 599-5144",
           "coords": {
@@ -4259,7 +4066,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/599d697016b643db9e5285ce9b979159/e10224d96069b1ae814b612074d79b25.jpg",
       "name": "365 Things Austin",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/logo/c6e1adce472f84ae6a84f836e081b7ae.jpg",
       "pins": {
         "type": "static",
@@ -4314,13 +4120,11 @@
               "style": ""
             },
             "name": "Perla's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1400 South Congress Avenue, Austin",
             "phone": "(512) 291-7300",
             "tags": []
           },
           "name": "Perla's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1400 South Congress Avenue, Austin",
           "phone": "(512) 291-7300",
           "coords": {
@@ -4373,13 +4177,11 @@
               "style": ""
             },
             "name": "Elizabeth Street Cafe",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1501 South 1st Street, Austin",
             "phone": "(512) 291-2881",
             "tags": []
           },
           "name": "Elizabeth Street Cafe",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1501 South 1st Street, Austin",
           "phone": "(512) 291-2881",
           "coords": {
@@ -4424,13 +4226,11 @@
               "style": ""
             },
             "name": "Lamberts",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "401 West 2nd Street, Austin",
             "phone": "(512) 494-1500",
             "tags": []
           },
           "name": "Lamberts",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "401 West 2nd Street, Austin",
           "phone": "(512) 494-1500",
           "coords": {
@@ -4487,13 +4287,11 @@
               "style": ""
             },
             "name": "Clark's Oyster Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1200 West 6th Street, Austin",
             "phone": "(512) 297-2525",
             "tags": []
           },
           "name": "Clark's Oyster Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1200 West 6th Street, Austin",
           "phone": "(512) 297-2525",
           "coords": {
@@ -4546,13 +4344,11 @@
               "style": ""
             },
             "name": "Josephine House",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1601 Waterston Avenue, Austin",
             "phone": "(512) 477-5584",
             "tags": []
           },
           "name": "Josephine House",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1601 Waterston Avenue, Austin",
           "phone": "(512) 477-5584",
           "coords": {
@@ -4593,13 +4389,11 @@
               "style": ""
             },
             "name": "Jeffrey's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1204 West Lynn Street Austin, Texas 78703",
             "phone": "(512) 477-5584",
             "tags": []
           },
           "name": "Jeffrey's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1204 West Lynn Street Austin, Texas 78703",
           "phone": "(512) 477-5584",
           "coords": {
@@ -4648,13 +4442,11 @@
               "style": ""
             },
             "name": "June's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1722 S Congress Ave, Austin, TX 78704",
             "phone": "(512) 416-1722",
             "tags": []
           },
           "name": "June's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1722 S Congress Ave, Austin, TX 78704",
           "phone": "(512) 416-1722",
           "coords": {
@@ -4695,7 +4487,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/599d697016b643db9e5285ce9b979159/17d2efe1e8d872ff382581edd5f6de22.jpg",
       "name": "365 Things Austin",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/fa3071412d1845e686769cd5631a0c61/logo/c6e1adce472f84ae6a84f836e081b7ae.jpg",
       "pins": {
         "type": "static",
@@ -4734,13 +4525,11 @@
               "style": ""
             },
             "name": "Barton Springs Saloon",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "424 South Lamar Boulevard, Austin",
             "phone": "(512) 482-9673",
             "tags": []
           },
           "name": "Barton Springs Saloon",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "424 South Lamar Boulevard, Austin",
           "phone": "(512) 482-9673",
           "coords": {
@@ -4785,13 +4574,11 @@
               "style": ""
             },
             "name": "House Wine",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "408 Josephine Street, Austin",
             "phone": "(512) 322-5210",
             "tags": []
           },
           "name": "House Wine",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "408 Josephine Street, Austin",
           "phone": "(512) 322-5210",
           "coords": {
@@ -4823,13 +4610,11 @@
               "style": ""
             },
             "name": "Juliet Italian Kitchen",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1500 Barton Springs Rd, Austin, TX 78704",
             "phone": "(512) 479-1800",
             "tags": []
           },
           "name": "Juliet Italian Kitchen",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1500 Barton Springs Rd, Austin, TX 78704",
           "phone": "(512) 479-1800",
           "coords": {
@@ -4874,13 +4659,11 @@
               "style": ""
             },
             "name": "Baby Acapulco’s",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1628 Barton Springs Rd,  Austin, Texas 78704",
             "phone": "(512)474-8774",
             "tags": []
           },
           "name": "Baby Acapulco’s",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1628 Barton Springs Rd,  Austin, Texas 78704",
           "phone": "(512)474-8774",
           "coords": {
@@ -4921,13 +4704,11 @@
               "style": ""
             },
             "name": "Chuy's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1728 Barton Springs Road, Austin",
             "phone": "(512) 474-4452",
             "tags": []
           },
           "name": "Chuy's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1728 Barton Springs Road, Austin",
           "phone": "(512) 474-4452",
           "coords": {
@@ -4964,13 +4745,11 @@
               "style": ""
             },
             "name": "Shady Grove",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1624 Barton Springs Road, Austin",
             "phone": "(512) 474-9991",
             "tags": []
           },
           "name": "Shady Grove",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1624 Barton Springs Road, Austin",
           "phone": "(512) 474-9991",
           "coords": {
@@ -5015,13 +4794,11 @@
               "style": ""
             },
             "name": "Gibson Street Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1109 S Lamar Blvd, Austin",
             "phone": "(512) 386-1345",
             "tags": []
           },
           "name": "Gibson Street Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1109 S Lamar Blvd, Austin",
           "phone": "(512) 386-1345",
           "coords": {
@@ -5066,13 +4843,11 @@
               "style": ""
             },
             "name": "El Alma",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1025 Barton Springs Road, Austin",
             "phone": "(512) 609-8923",
             "tags": []
           },
           "name": "El Alma",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1025 Barton Springs Road, Austin",
           "phone": "(512) 609-8923",
           "coords": {
@@ -5117,13 +4892,11 @@
               "style": ""
             },
             "name": "Zax Restaurant and Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "312 Barton Springs Road, Austin",
             "phone": "(512) 481-0100",
             "tags": []
           },
           "name": "Zax Restaurant and Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "312 Barton Springs Road, Austin",
           "phone": "(512) 481-0100",
           "coords": {
@@ -5168,13 +4941,11 @@
               "style": ""
             },
             "name": "Corner Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1901 S Lamar Blvd, Austin, TX 78704",
             "phone": "(512) 445-9500",
             "tags": []
           },
           "name": "Corner Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1901 S Lamar Blvd, Austin, TX 78704",
           "phone": "(512) 445-9500",
           "coords": {
@@ -5219,13 +4990,11 @@
               "style": ""
             },
             "name": "Uchi",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "801 South Lamar￼ ￼Boulevard, Austin",
             "phone": "(512) 916-4808",
             "tags": []
           },
           "name": "Uchi",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "801 South Lamar￼ ￼Boulevard, Austin",
           "phone": "(512) 916-4808",
           "coords": {
@@ -5266,7 +5035,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5dba4891d59c41f78274a1b523d594a2/1680eba565ee40ccaea37e4fa89ce8c4/0a14dda069afc99d9cb7bafb64fb0b01.jpg",
       "name": "AustinFoodstagram",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -5300,13 +5068,11 @@
               "style": ""
             },
             "name": "Here Nor There",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "612 Brazos St, Austin, TX 78701",
             "phone": "",
             "tags": []
           },
           "name": "Here Nor There",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "612 Brazos St, Austin, TX 78701",
           "phone": "",
           "coords": {
@@ -5338,13 +5104,11 @@
               "style": ""
             },
             "name": "Watertrade",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1603 S Congress Ave, Austin, TX 78704",
             "phone": "",
             "tags": []
           },
           "name": "Watertrade",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1603 S Congress Ave, Austin, TX 78704",
           "phone": "",
           "coords": {
@@ -5376,13 +5140,11 @@
               "style": ""
             },
             "name": "Whisler's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1816 East 6th Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Whisler's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1816 East 6th Street, Austin",
           "phone": "",
           "coords": {
@@ -5414,13 +5176,11 @@
               "style": ""
             },
             "name": "Nickel City",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1133 E 11th St, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "Nickel City",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1133 E 11th St, Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -5452,13 +5212,11 @@
               "style": ""
             },
             "name": "King Bee Lounge",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1906 East 12th Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "King Bee Lounge",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1906 East 12th Street, Austin",
           "phone": "",
           "coords": {
@@ -5490,13 +5248,11 @@
               "style": ""
             },
             "name": "Garage Bar",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "503 Colorado St, Austin, TX 78701",
             "phone": "",
             "tags": []
           },
           "name": "Garage Bar",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "503 Colorado St, Austin, TX 78701",
           "phone": "",
           "coords": {
@@ -5528,13 +5284,11 @@
               "style": ""
             },
             "name": "Midnight Cowboy",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "313 East 6th Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Midnight Cowboy",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "313 East 6th Street, Austin",
           "phone": "",
           "coords": {
@@ -5566,13 +5320,11 @@
               "style": ""
             },
             "name": "La Holly",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2500 E 6th St, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "La Holly",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2500 E 6th St, Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -5604,13 +5356,11 @@
               "style": ""
             },
             "name": "Floppy Disk Repair Co",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "119 E 5th St, Austin, TX 78701",
             "phone": "",
             "tags": []
           },
           "name": "Floppy Disk Repair Co",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "119 E 5th St, Austin, TX 78701",
           "phone": "",
           "coords": {
@@ -5642,13 +5392,11 @@
               "style": ""
             },
             "name": "The Roosevelt Room",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "307 West 5th Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "The Roosevelt Room",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "307 West 5th Street, Austin",
           "phone": "",
           "coords": {
@@ -5689,7 +5437,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5dba4891d59c41f78274a1b523d594a2/1680eba565ee40ccaea37e4fa89ce8c4/0e935697424cebbd991e7b4f49fc77ec.jpg",
       "name": "AustinFoodstagram",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -5723,13 +5470,11 @@
               "style": ""
             },
             "name": "Austin Beerworks",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "3001 Industrial Terrace, Austin, TX 78758",
             "phone": "",
             "tags": []
           },
           "name": "Austin Beerworks",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "3001 Industrial Terrace, Austin, TX 78758",
           "phone": "",
           "coords": {
@@ -5761,13 +5506,11 @@
               "style": ""
             },
             "name": "Jester King Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "13187 Fitzhugh Rd, Austin, TX 78736",
             "phone": "",
             "tags": []
           },
           "name": "Jester King Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "13187 Fitzhugh Rd, Austin, TX 78736",
           "phone": "",
           "coords": {
@@ -5799,13 +5542,11 @@
               "style": ""
             },
             "name": "Hops and Grain Brewing",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "507 Calles St #101, Austin, TX 78702",
             "phone": "(512) 914-2467",
             "tags": []
           },
           "name": "Hops and Grain Brewing",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "507 Calles St #101, Austin, TX 78702",
           "phone": "(512) 914-2467",
           "coords": {
@@ -5837,13 +5578,11 @@
               "style": ""
             },
             "name": "Celis Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "10001 Metric Blvd, Austin, TX 78758",
             "phone": "(512) 524-2377",
             "tags": []
           },
           "name": "Celis Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "10001 Metric Blvd, Austin, TX 78758",
           "phone": "(512) 524-2377",
           "coords": {
@@ -5875,13 +5614,11 @@
               "style": ""
             },
             "name": "Lazarus Brewing Co.",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1902 East 6th Street, Austin",
             "phone": "",
             "tags": []
           },
           "name": "Lazarus Brewing Co.",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1902 East 6th Street, Austin",
           "phone": "",
           "coords": {
@@ -5913,13 +5650,11 @@
               "style": ""
             },
             "name": "St Elmo Brewing Co",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "440 E St Elmo Rd G-2, Austin, TX 78745",
             "phone": "",
             "tags": []
           },
           "name": "St Elmo Brewing Co",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "440 E St Elmo Rd G-2, Austin, TX 78745",
           "phone": "",
           "coords": {
@@ -5951,13 +5686,11 @@
               "style": ""
             },
             "name": "Strange Land Brewery",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "5904 Bee Cave Rd, Austin, TX 78746",
             "phone": "",
             "tags": []
           },
           "name": "Strange Land Brewery",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "5904 Bee Cave Rd, Austin, TX 78746",
           "phone": "",
           "coords": {
@@ -5989,13 +5722,11 @@
               "style": ""
             },
             "name": "Live Oak Brewing Company",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1615 Crozier Ln, Del Valle, TX 78617",
             "phone": "",
             "tags": []
           },
           "name": "Live Oak Brewing Company",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1615 Crozier Ln, Del Valle, TX 78617",
           "phone": "",
           "coords": {
@@ -6027,13 +5758,11 @@
               "style": ""
             },
             "name": "Friends and Allies Brewing",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "979 Springdale Rd #124, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "Friends and Allies Brewing",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "979 Springdale Rd #124, Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -6065,13 +5794,11 @@
               "style": ""
             },
             "name": "Zilker Brewing",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1701 E 6th St, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "Zilker Brewing",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1701 E 6th St, Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -6112,7 +5839,6 @@
       "scroll_lock": false,
       "featured_media": "https://vessel-media-0.s3-us-west-2.amazonaws.com/publishers/5dba4891d59c41f78274a1b523d594a2/1680eba565ee40ccaea37e4fa89ce8c4/0582c16d3b2d51a44c80b2993f5389f3.jpg",
       "name": "AustinFoodstagram",
-      "qrcode": "pkg:/images/qr100.png",
       "logo": null,
       "pins": {
         "type": "static",
@@ -6146,13 +5872,11 @@
               "style": ""
             },
             "name": "The Brewer's Table",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "4715 E 5th St, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "The Brewer's Table",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "4715 E 5th St, Austin, TX 78702",
           "phone": "",
           "coords": {
@@ -6184,13 +5908,11 @@
               "style": ""
             },
             "name": "Joanns Fine Foods",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1224 S Congress Ave, Austin, TX 78704",
             "phone": "",
             "tags": []
           },
           "name": "Joanns Fine Foods",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1224 S Congress Ave, Austin, TX 78704",
           "phone": "",
           "coords": {
@@ -6222,13 +5944,11 @@
               "style": ""
             },
             "name": "SOUR DUCK MARKET",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1814 East Martin Luther King Junior Boulevard, Austin",
             "phone": "",
             "tags": []
           },
           "name": "SOUR DUCK MARKET",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1814 East Martin Luther King Junior Boulevard, Austin",
           "phone": "",
           "coords": {
@@ -6260,13 +5980,11 @@
               "style": ""
             },
             "name": "Guild ",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "3800 N Lamar Blvd ste 170, Austin, TX 78756",
             "phone": "",
             "tags": []
           },
           "name": "Guild ",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "3800 N Lamar Blvd ste 170, Austin, TX 78756",
           "phone": "",
           "coords": {
@@ -6298,13 +6016,11 @@
               "style": ""
             },
             "name": "Lin Asian Bar + Dim Sum",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1203 W 6th St, Austin, TX 78703",
             "phone": "",
             "tags": []
           },
           "name": "Lin Asian Bar + Dim Sum",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1203 W 6th St, Austin, TX 78703",
           "phone": "",
           "coords": {
@@ -6336,13 +6052,11 @@
               "style": ""
             },
             "name": "Better Half Coffee + Cocktails",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "406 Walsh St, Austin, TX 78703",
             "phone": "",
             "tags": []
           },
           "name": "Better Half Coffee + Cocktails",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "406 Walsh St, Austin, TX 78703",
           "phone": "",
           "coords": {
@@ -6374,13 +6088,11 @@
               "style": ""
             },
             "name": "Hank's",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "5811 Berkman Dr #100",
             "phone": "",
             "tags": []
           },
           "name": "Hank's",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "5811 Berkman Dr #100",
           "phone": "",
           "coords": {
@@ -6412,13 +6124,11 @@
               "style": ""
             },
             "name": "Suerte",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "https://www.suerteatx.com/reservations/",
             "phone": "",
             "tags": []
           },
           "name": "Suerte",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "https://www.suerteatx.com/reservations/",
           "phone": "",
           "coords": {
@@ -6450,13 +6160,11 @@
               "style": ""
             },
             "name": "Loro",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "2115 S Lamar Blvd, Austin, TX 78704",
             "phone": "",
             "tags": []
           },
           "name": "Loro",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "2115 S Lamar Blvd, Austin, TX 78704",
           "phone": "",
           "coords": {
@@ -6488,13 +6196,11 @@
               "style": ""
             },
             "name": "Il Brutto",
-            "qrcode": "pkg:/images/qr100.png",
             "address": "1601 E 6th St, Austin, TX 78702",
             "phone": "",
             "tags": []
           },
           "name": "Il Brutto",
-          "qrcode": "pkg:/images/qr100.png",
           "address": "1601 E 6th St, Austin, TX 78702",
           "phone": "",
           "coords": {
