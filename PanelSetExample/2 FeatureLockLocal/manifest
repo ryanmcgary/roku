@@ -22,7 +22,6 @@ splash_screen_hd=pkg:/images/house.jpg
 
 splash_screen_sd=pkg:/images/rde_splash_sd.jpg
 
-sg_component_libs_required=Roku_Analytics
 
 
 splash_screen_fhd=pkg:/images/rde_splash_fhd.jpg
