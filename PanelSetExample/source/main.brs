@@ -8,7 +8,9 @@ sub showChannelSGScreen()
   screen = CreateObject("roSGScreen")
   m.port = CreateObject("roMessagePort")
   screen.setMessagePort(m.port)
-  scene = screen.CreateScene("PanelSetExample")
+
+  scene = screen.CreateScene("PanelSetExample") 'INIT panelsetscene.xml'
+  
   scene.backExitsScene = false
   screen.show()
 
