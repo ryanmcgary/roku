@@ -20,6 +20,8 @@
 
         'GLOBALS
           'STATUS'
+            m.npsShownThisSession = false
+            m.showNps = false
             m.currentScreen = "init"
             m.globalStatus = m.top.findNode("globalStatus")
           'SCREENS'
@@ -89,13 +91,13 @@
           centerx = (1280 - pinLabelrect.width) / 2
           centery = (720 - pinLabelrect.height) / 2
           pinLabel.translation = [ centerx, centery ]
-          m.code = "2316" '(1000 + Rnd(8999)).ToStr() FIX
+          m.code = "2316" '(1000 + Rnd(8999)).ToStr() 'FIX
           pinLabel.text = m.code
           
           setData("pinCode", m.code)
         'OBSERVE LINK BUTTON TO CHECK URL'
-          'm.pinAttemptLink = m.top.findNode("pinAttemptLink")
-          'm.pinAttemptLink.observeField("buttonSelected", "getAuthJson") ' THIS TRIGGERS NEXT STEP IN FLOW
+          m.pinAttemptLink = m.top.findNode("pinAttemptLink")
+          m.pinAttemptLink.observeField("buttonSelected", "getAuthJson") ' THIS TRIGGERS NEXT STEP IN FLOW
           m.pinAttemptLink.setFocus(true)
 
         'ENSURE VIEW RENDERED'
@@ -112,43 +114,43 @@
         TRY
           m.globalStatus.text = "sduffy fired"
           m.globalStatus.text = "getAuthJson fired"
-          'm.simpleTask = CreateObject("roSGNode", "SimpleTask") ' ADDBACK FOR REMOTE
+          m.simpleTask = CreateObject("roSGNode", "SimpleTask") ' ADDBACK FOR REMOTE
 
-          'm.simpleTask.ObserveField("auth", "onAuthCheck") ' ADDBACK FOR REMOTE
-          'm.simpleTask.control = "RUN" ' ADDBACK FOR REMOTE
+          m.simpleTask.ObserveField("auth", "onAuthCheck") ' ADDBACK FOR REMOTE
+          m.simpleTask.control = "RUN" ' ADDBACK FOR REMOTE
           m.globalStatus.text = "duffy fired"
-          onAuthCheck() ' REMOVE FOR REMOTE
+          'onAuthCheck() ' REMOVE FOR REMOTE
         CATCH dfs
         END TRY
       end sub 
 
-      sub onAuthCheck() 
-      '^REMOVE FOR REMOTE
-      'function onAuthCheck() as void ' ADDBACK FOR REMOTE
+      'sub onAuthCheck() 
+      '^RZEMOVE FOR REMOTE
+      function onAuthCheck() as void
         m.globalStatus.text = "onauthchech fired"
         TRY
-          'authCheck = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
-          jsonString = ReadAsciiFile("pkg:/json/auth.json") ' REMOVE FOR REMOTE
+          authCheck = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
+          'jsonString = ReadAsciiFile("pkg:/json/auth.json") ' REMOVE FOR REMOTE
           m.globalStatus.text = "onauthchech fired2"
-          authCheck = ParseJSON(jsonString) ' REMOVE FOR REMOTE
+          'authCheck = ParseJSON(jsonString) ' REMOVE FOR REMOTE
           m.globalStatus.text = "onauthchech fired3"
-          'm.globalStatus.text = "onauthchech val " + authCheck.authed
+          m.globalStatus.text = "onauthchech val "
           if authCheck.authed = 1 then
             m.globalStatus.text = "onauthchech fired4"
             setData("HomeId", authCheck.homeId.ToStr())
             m.homeId = authCheck.homeId.ToStr()
 
-            jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")' REMOVE FOR REMOTE
-            m.jbon = ParseJSON(jsonAsString)' REMOVE FOR REMOTE
-            m.jzon = ParseJSON(jsonAsString)' REMOVE FOR REMOTE
+            'jsonAsString = ReadAsciiFile("pkg:/json/testCase.json")' REMOVE FOR REMOTE
+            'm.jbon = ParseJSON(jsonAsString)' REMOVE FOR REMOTE
+            'm.jzon = ParseJSON(jsonAsString)' REMOVE FOR REMOTE
 
             m.pinCodeScreen.visible = false
             m.globalStatus.text = "YAYA"
-            'm.jzon = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
+            m.jzon = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
             m.globalStatus.text = "YAYA2"
-            'm.jbon = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
+            m.jbon = ParseJSON(m.simpleTask.auth) ' ADDBACK FOR REMOTE
             m.globalStatus.text = "YAYA3"
-            'm.globalStatus.text = "YAYA4" + m.simpleTask.auth ' ADDBACK FOR REMOTE
+            m.globalStatus.text = "YAYA4" + m.simpleTask.auth ' ADDBACK FOR REMOTE
             m.globalStatus.text = "YAYA4" + m.jbon.profile_image
             
 
@@ -163,9 +165,9 @@
           'm.globalStatus.text = "globalIndex" + str + m.simpleTask.xxx
         CATCH dfs
         END TRY
-      'end function ' ADDBACK FOR REMOTE
-      end sub
-      '^REMOVE FOR REMOTE
+      end function ' ADDBACK FOR REMOTE
+      'end sub
+      '^RZEMOVE FOR REMOTE
 
       'sub getHomeJson()
         '  TRY
@@ -194,8 +196,28 @@
         initFAQScreen()
         renderHomeScreen()
       end sub
-    
+
     'FOR HOME SCREEN'
+        sub npsListItemSelected()
+          npsNum = m.npsList.itemSelected
+          m.showNps = false
+          m.npsShowThisSession = true
+          m.npsBack = m.top.findNode("npsBack")
+          m.nps = m.top.findNode("nps")
+          m.npsBack.visible = false
+          m.nps.visible = false
+          renderHomeScreen()
+          m.global.RSG_analytics.trackEvent = {
+            google: {
+                t : "event",
+                ec: "nps",
+                ea: "homeRating",
+                el: npsNum.ToStr(),
+                ev: npsNum
+            }
+          }
+        end sub
+
       sub renderHomeScreen()
         'm.jzon should be populated
         m.globalStatus.text = "renderHomeScreen fired"
@@ -239,7 +261,6 @@
               m.homeVideo.control = "prebuffer"
             end if
 
-
         'TOP RIGHT MESSAGE'
         if m.jzon.message_welcome_enabled = 1 then
           m.homeChat.visible = true
@@ -251,7 +272,21 @@
         m.homeOptions = m.top.findNode("homeOptions")
         m.homeOptions.observeField("buttonSelected", "onHomeButtonSelected")
         m.homeOptions.setFocus(true)
-        
+
+        if m.showNps = true then
+          if m.npsShownThisSession = false then
+            m.nps = m.top.findNode("nps")
+            m.nps.visible = true
+            m.npsBack = m.top.findNode("npsBack")
+            m.npsBack.visible = true
+            m.npsShownThisSession = true
+            
+            m.npsList = m.top.findNode("npsList")
+            m.npsList.observeField("itemSelected","npsListItemSelected")
+            m.npsList.setFocus(true)
+          end if
+        end if
+
         'HIDE/SHOW ALL SCREENS'
         m.homeScreen.visible = true
         m.pinCodeScreen.visible = false
@@ -300,8 +335,7 @@
           'm.jbon = ParseJSON(jsonAsString)
           m.globalStatus.text = "item1"
 
-
-          'GENERATE VENUE LIST'
+          'GENERATE FAQ LIST'
           m.faqList = m.top.findNode("faqList")
           parsedFaqContent = createObject("roSGNode", "ContentNode")
           'GRAB JSON'
@@ -514,6 +548,7 @@
     'FOR GUIDE SCREEN'
       sub renderGuideListScreen()
         TRY
+          m.showNps = true
           m.globalStatus.text = "GUIDE fired"
           
           m.guideChat = m.top.findNode("guideChat")
@@ -625,7 +660,7 @@
 
             m.video.control = "stop"
 
-            m.globalStatus.text = "FUCK YEAH COUNT!" + m.guideImageArray.count().ToStr()
+            m.globalStatus.text = "YEAH COUNT!" + m.guideImageArray.count().ToStr()
             'if m.guideImageArray.count() > 0
             'end if
             
@@ -637,7 +672,7 @@
 
               m.guidePreview.uri = m.guideImageArray[0]
               m.guidePreview.loadwidth = "350"
-              m.globalStatus.text = "FUCK YEAH IMAGES!"
+              m.globalStatus.text = "YEAH IMAGES!"
             end if
           
           TRY
@@ -955,8 +990,23 @@
           height="100"
           />
       </LayoutGroup>
-      <LayoutGroup translation="[20,20]" visible="false">
-        <Rectangle width="1240" height="680" color="0x010101BE" />
+      <LayoutGroup translation="[20,20]" id="npsBack" visible="false">
+        <Rectangle width="1240" height="680" color="0x010101F0" />
+      </LayoutGroup>
+      <LayoutGroup translation="[20,20]" id="nps" visible="false">
+        <Label id="npsHeader" text="Rate our app!" />
+        <LabelList
+          id = "npsList"
+          translation = "[113,227]"
+          itemSize = "[540,48]" >
+          <ContentNode role="content">
+            <ContentNode title = "1 star" />
+            <ContentNode title = "2 stars" />
+            <ContentNode title = "3 stars" />
+            <ContentNode title = "4 stars" />
+            <ContentNode title = "5 stars" />
+          </ContentNode>
+        </LabelList>
       </LayoutGroup>
     </Group>
 

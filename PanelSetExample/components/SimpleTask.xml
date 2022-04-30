@@ -19,6 +19,8 @@ function executeTask() as void
 
 	if homeId <> "invalid" then
 		authRequest = CreateObject("roUrlTransfer")
+		authRequest.setCertificatesFile("common:/certs/ca-bundle.crt")
+  		authRequest.initClientCertificates()
 		authRequest.SetUrl("http://newco-roku.herokuapp.com/get_home/"+ homeId +".json")
 		'authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/auth_check/1234.json")
 		response = authRequest.GetToString()
@@ -26,6 +28,8 @@ function executeTask() as void
 	else
 		authRequest = CreateObject("roUrlTransfer")
 		authRequest.SetUrl("http://newco-roku.herokuapp.com/auth_check/"+ code +".json")
+		authRequest.setCertificatesFile("common:/certs/ca-bundle.crt")
+  		authRequest.initClientCertificates()
 		'authRequest.SetUrl("http://1c61-136-62-165-209.ngrok.io/auth_check/1234.json")
 		response = authRequest.GetToString()
 		m.top.auth = response
